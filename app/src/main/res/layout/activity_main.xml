@@ -7,14 +7,22 @@
     tools:context=".MainActivity">
 
     <!-- Note: A RecyclerView can also be used -->
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="100dp"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        android:paddingBottom="100dp">
 
         <!-- Scrollable content -->
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:insetLeft="24dp"
+            android:insetRight="24dp"
+            android:text="@string/recentButton" />
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -32,6 +40,6 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_add_24dp"
         app:layout_anchor="@id/bottomAppBar"
-        />
+        android:contentDescription="@string/todo" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,4 +4,6 @@
     <string name="content_description_search">Description</string>
     <string name="more">more</string>
     <string name="content_description_more">More</string>
+    <string name="todo">TODO</string>
+    <string name="recentButton">RECENT</string>
 </resources>
