@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="pal_1">#4C5B61</color>
+    <color name="pal_2">#829191</color>
+    <color name="pal_3">#F06543</color>
+    <color name="pal_4">#8B2635</color>
+    <color name="pal_5">#260F26</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

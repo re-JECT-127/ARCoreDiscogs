@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ARCoreDiscogs</string>
+    <string name="search">Search</string>
+    <string name="content_description_search">Description</string>
+    <string name="more">more</string>
+    <string name="content_description_more">More</string>
 </resources>
