@@ -7,6 +7,8 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomappbar.BottomAppBar
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
@@ -25,5 +27,23 @@ class MainActivity : AppCompatActivity() {
         Log.d("FYI", "toimiiko")
         viewModel.hitcountquery("rock")
 
+
+
+        val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
+
+        bottomAppBar.setNavigationOnClickListener {
+            // Handle navigation icon press
+        }
+
+        bottomAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.search -> {
+                    // Handle search icon press
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 }
