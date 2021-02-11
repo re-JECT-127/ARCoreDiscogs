@@ -12,8 +12,9 @@ class MainViewModel: ViewModel() {
     private val query = MutableLiveData<String>()
 
     fun hitcountquery(name: String){
-        query.value = name
         Log.d("FYI", name)
+        query.value = name
+
     }
 
     val totalHits = query.switchMap {

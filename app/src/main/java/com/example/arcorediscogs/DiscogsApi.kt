@@ -1,18 +1,19 @@
 package com.example.arcorediscogs
 
+import com.google.gson.annotations.SerializedName
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 object DiscogsApi {
-    const val URL = "https://api.discogs.com/artists/1/releases?page=2&per_page=75"
+    const val URL = "https://api.discogs.com/database/"
     object Model {
-        data class presidentHits(val totalHits: String?)
+        data class Result(@SerializedName("items") val items: Int)
     }
     interface Service {
-        @GET("releases")
-        suspend fun artist(@Query("page") action: String): Model.presidentHits
+        @GET("search")
+        suspend fun artist(@Query("q") query: String, @Query("genre") genre: String, @Query("token") token: String): Model.Result
     }
     private val retrofit = Retrofit.Builder()
         .baseUrl(URL)
