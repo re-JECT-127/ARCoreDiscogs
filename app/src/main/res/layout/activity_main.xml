@@ -17,17 +17,12 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="search"
-            android:text="Button" />
-        <Button
-            android:id="@+id/button2"
+            style="@style/Widget.App.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:insetLeft="24dp"
-            android:insetRight="24dp"
-            android:text="@string/recentButton" />
+            android:onClick="search"
+            android:text="@string/button" />
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomappbar.BottomAppBar
