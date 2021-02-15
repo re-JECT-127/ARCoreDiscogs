@@ -1,11 +1,9 @@
 package com.example.arcorediscogs
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.ar.sceneform.ux.ArFragment
 
 private const val ARG_PARAM1 = "param1"
@@ -32,4 +30,4 @@ class mainFrag : ArFragment() {
         return inflater.inflate(R.layout.mainfrag, container, false)
     }
 
-    }
+}

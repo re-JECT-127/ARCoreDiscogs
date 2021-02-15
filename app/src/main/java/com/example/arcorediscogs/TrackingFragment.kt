@@ -10,11 +10,12 @@ import com.google.ar.core.Config
 import com.google.ar.core.Session
 import com.google.ar.sceneform.ux.ArFragment
 
-class TrackingFragment:  ArFragment() {
-    override fun onCreateView(inflater: LayoutInflater, container:
-    ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container,
-            savedInstanceState)
+class TrackingFragment : ArFragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater, container:
+        ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        val view = super.onCreateView(inflater, container, savedInstanceState)
         // Disable plane renderer and turn off planeDiscoveryController
         planeDiscoveryController.hide()
         planeDiscoveryController.setInstructionView(null)
@@ -28,11 +29,14 @@ class TrackingFragment:  ArFragment() {
         setupAugmentedImageDatabase(config, session)
         return config
     }
-    private fun setupAugmentedImageDatabase(config: Config, session:
-    Session?) {
+
+    private fun setupAugmentedImageDatabase(
+        config: Config, session:
+        Session?
+    ) {
         val augmentedImageDb = AugmentedImageDatabase(session)
         val assetManager = context!!.assets
-        listOf("ree", "thetimlbr").forEach {
+        listOf("BladeRunnerOST", "boniver").forEach {
             val inputStream = assetManager.open("$it.jpg")
             val augmentedImageBitmap =
                 BitmapFactory.decodeStream(inputStream)

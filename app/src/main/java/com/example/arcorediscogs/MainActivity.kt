@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 
 
-
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
 
@@ -28,10 +27,10 @@ class MainActivity : AppCompatActivity() {
             // viewModel.hitcountquery(name = it.artist.toString())
         })
     }
-    fun search(view: View){
+
+    fun search(view: View) {
         Log.d("FYI", "toimiiko")
         viewModel.hitcountquery("rock")
-
 
 
         val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)

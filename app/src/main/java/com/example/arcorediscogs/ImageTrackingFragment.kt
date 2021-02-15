@@ -1,15 +1,12 @@
 package com.example.arcorediscogs
 
-import android.app.Activity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.NonNull
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.ar.core.AugmentedImage
 import com.google.ar.core.TrackingState
@@ -36,7 +33,8 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     }
 
 
-    @NonNull open fun getSupportFragmentManager(): FragmentManager{
+    @NonNull
+    open fun getSupportFragmentManager(): FragmentManager {
         return getSupportFragmentManager()
     }
 
@@ -80,7 +78,8 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                             // Create a node as a child node of anchor node, and define node's renderable according to augmented image
                             val imgNode = TransformableNode(arFrag.transformationSystem)
                             imgNode.setParent(anchorNode)
-                            viewRenderable?.view?.findViewById<TextView>(R.id.txtImgTrack)?.text = it.name
+                            viewRenderable?.view?.findViewById<TextView>(R.id.txtImgTrack)?.text =
+                                it.name
                             imgNode.renderable = viewRenderable
 
                         }
