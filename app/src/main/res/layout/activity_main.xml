@@ -7,23 +7,17 @@
     tools:context=".MainActivity">
 
     <!-- Note: A RecyclerView can also be used -->
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.google.ar.sceneform.ux.ArFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingBottom="100dp">
-
-        <!-- Scrollable content -->
-
-        <Button
-            android:id="@+id/button"
-            style="@style/Widget.App.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:insetLeft="24dp"
-            android:onClick="search"
-            android:text="@string/button" />
-    </androidx.core.widget.NestedScrollView>
+        android:paddingBottom="100dp"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"

@@ -7,4 +7,7 @@
     <string name="todo">TODO</string>
     <string name="recentButton">RECENT</string>
     <string name="button">Button</string>
+    <string name="detected_img_need_more_info">Detected Image needs more info</string>
+    <string name="track_stop">Tracking Stop</string>
+    <string name="fit_image_to_scan">Fit Image to Scan</string>
 </resources>
