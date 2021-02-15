@@ -9,7 +9,8 @@ import retrofit2.http.Query
 object DiscogsApi {
     const val URL = "https://api.discogs.com/database/"
     object Model {
-        data class Result(@SerializedName("items") val items: Int)
+        data class Result(@SerializedName("pagination") val pagination: Pagination)
+        data class Pagination(@SerializedName("items") val items: Int)
     }
     interface Service {
         @GET("search")
