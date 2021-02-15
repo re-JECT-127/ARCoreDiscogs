@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
-        app:navigationIcon="@drawable/ic_menu_24dp"
         app:menu="@menu/bottom_app_bar"
         app:navigationIcon="@drawable/ic_menu_24dp" />
 
