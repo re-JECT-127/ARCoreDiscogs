@@ -10,4 +10,6 @@
     <string name="fit_image_to_scan">fit image to scan</string>
     <string name="detected_img_need_more_info">Image detected but needs more information</string>
     <string name="track_stop">Trcking stopped</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val imgTrackingFragment = ImgTrackingFragment()
+        val imgTrackingFragment = ImageTrackingFragment()
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment2, imgTrackingFragment)
             commit()

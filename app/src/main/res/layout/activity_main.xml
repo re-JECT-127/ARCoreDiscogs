@@ -44,13 +44,13 @@
 
     <FrameLayout
         android:id="@+id/fragment2"
-        android:name="com.example.arcorediscogs.ImgTrckingFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
+        android:name="com.example.arcorediscogs.ImageTrackingFragment"
+        android:layout_width="366dp"
+        android:layout_height="547dp"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"

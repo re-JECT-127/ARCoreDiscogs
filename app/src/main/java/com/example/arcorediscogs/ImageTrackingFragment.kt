@@ -1,34 +1,46 @@
 package com.example.arcorediscogs
 
-import android.content.Context
+import android.app.Activity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
+import android.widget.Toast
+import androidx.annotation.NonNull
+import androidx.fragment.app.FragmentManager
 import com.google.ar.core.AugmentedImage
 import com.google.ar.core.TrackingState
 import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
-import android.widget.Toast
 
-class ImgTrackingFragment: Fragment(R.layout.img_tracking_fragment) {
+
+class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     private lateinit var arFrag: ArFragment
     private var viewRenderable: ViewRenderable? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arFrag = supportFragmentManager.findFragmentById(R.id.fragArImg) as ArFragment
+        arFrag = getSupportFragmentManager().findFragmentById(R.id.fragArImg) as ArFragment
 
         val renderableFuture = ViewRenderable.builder()
-            .setView(this, R.layout.view_renderable)
+            .setView(requireContext(), R.layout.view_renderable)
             .build()
         renderableFuture.thenAccept { viewRenderable = it }
         arFrag.arSceneView.scene.addOnUpdateListener { frameUpdate() }
 
-}
+    }
+
+
+    @NonNull open fun getSupportFragmentManager(): FragmentManager{
+        return getSupportFragmentManager()
+    }
+
+
     private fun frameUpdate() {
         val fitToScanImg = getView()?.findViewById<ImageView>(R.id.fitToScanImg)
         val arFrame = arFrag.arSceneView.arFrame
@@ -47,11 +59,11 @@ class ImgTrackingFragment: Fragment(R.layout.img_tracking_fragment) {
                         // Image initially detected, but not enough data available to estimate its location in 3D space.
                         // Do not use the image's pose and size estimates until the image's tracking state is tracking
                         val text = "${R.string.detected_img_need_more_info} ${it.name}"
-                        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
                     }
                     TrackingState.STOPPED -> {
                         val text = "${R.string.track_stop} ${it.name}"
-                        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
                     }
                     TrackingState.TRACKING -> {
                         val anchors = it.anchors
