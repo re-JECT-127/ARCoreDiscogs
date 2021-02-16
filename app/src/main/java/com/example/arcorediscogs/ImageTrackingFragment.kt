@@ -1,6 +1,7 @@
 package com.example.arcorediscogs
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -22,25 +23,27 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arFrag = getSupportFragmentManager().findFragmentById(R.id.fragArImg) as ArFragment
-
+        Log.d("OVC", "onViewCreated: done")
+        arFrag = childFragmentManager.findFragmentById(R.id.fragArImg) as ArFragment
+        Log.d("OVC","Test $arFrag")
         val renderableFuture = ViewRenderable.builder()
             .setView(requireContext(), R.layout.view_renderable)
             .build()
-        renderableFuture.thenAccept { viewRenderable = it }
+        renderableFuture.thenAccept {
+            viewRenderable = it
+            Log.d("OVC", "viewRenderable")
+        }
+        renderableFuture.exceptionally {
+            Log.d("OVC", "disaster")
+            null
+        }
         arFrag.arSceneView.scene.addOnUpdateListener { frameUpdate() }
 
     }
 
-
-    @NonNull
-    open fun getSupportFragmentManager(): FragmentManager {
-        return getSupportFragmentManager()
-    }
-
-
     private fun frameUpdate() {
         val fitToScanImg = getView()?.findViewById<ImageView>(R.id.fitToScanImg)
+        Log.d("OVC", "frameUpdate")
         val arFrame = arFrag.arSceneView.arFrame
         if (arFrame != null) {
             if (arFrame.camera.trackingState != TrackingState.TRACKING) return
@@ -50,6 +53,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             arFrame?.getUpdatedTrackables(AugmentedImage::class.java)
         if (updatedAugmentedImages != null) {
             updatedAugmentedImages.forEach {
+                Log.d("OVC", "frameUpdate images $it")
                 when (it.trackingState) {
                     null -> return@forEach
 
