@@ -1,10 +1,8 @@
 package com.example.arcorediscogs
 
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +21,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     private lateinit var arFrag: ArFragment
     private var viewRenderable: ViewRenderable? = null
     lateinit var webServiceRepository: WebServiceRepository
+    lateinit var stinkler: stinkler
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -94,7 +93,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                             imgNode.setParent(anchorNode)
                             viewRenderable?.view?.findViewById<TextView>(R.id.txtImgTrack)?.text =
                                 it.name
-                            webServiceRepository.title = it.name
+                            stinkler.title = it.name
                             imgNode.renderable = viewRenderable
 
                         }

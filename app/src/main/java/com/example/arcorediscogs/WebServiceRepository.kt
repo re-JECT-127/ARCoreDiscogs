@@ -1,7 +1,11 @@
 package com.example.arcorediscogs
 
-class WebServiceRepository(var title: String) {
+class WebServiceRepository() {
 
+    lateinit var stinkler: stinkler
     private val call = DiscogsApi.service
-    suspend fun getUser(jtn: String) = call.artist("query", "$title", "VfMCuKxEDTPpcrbKIpfmjhjEaGFntFhMXligFOol")
+
+
+    suspend fun getUser(totalHits: String) =
+        call.artist("query", "$stinkler.title", "VfMCuKxEDTPpcrbKIpfmjhjEaGFntFhMXligFOol")
 }
