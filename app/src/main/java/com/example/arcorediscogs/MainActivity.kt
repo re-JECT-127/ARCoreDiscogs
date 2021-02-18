@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         fun search() {
             Log.d("FYI", "toimiiko")
             viewModel.hitcountquery("nirvana-nevermind")
-            val jtn = "nirvana-nevermind"
+
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
             Log.d("mAct", "Fab clicked")
