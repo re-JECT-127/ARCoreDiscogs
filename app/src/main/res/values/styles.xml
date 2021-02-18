@@ -15,6 +15,7 @@
         <item name="materialButtonStyle">@style/Widget.App.Button</item>
     </style>
 
+
     <style name="TextAppearance.App.Button" parent="TextAppearance.MaterialComponents.Button">
         <item name="fontFamily">@font/rubik</item>
         <item name="android:fontFamily">@font/rubik</item>
@@ -36,6 +37,8 @@
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>
         <item name="android:textAppearance">@style/TextAppearance.App.Button</item>
         <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">4dp</item>
     </style>
 
     <style name="ThemeOverlay.App.Button.TextButton" parent="">
@@ -45,6 +48,7 @@
     <style name="ThemeOverlay.App.Button" parent="">
         <item name="colorPrimary">@color/pal_1</item>
         <item name="colorOnPrimary">@color/pal_2</item>
+
     </style>
 
     <style name="TextAppearance.App.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
