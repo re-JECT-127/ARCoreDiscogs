@@ -21,7 +21,7 @@
     <FrameLayout
         android:id="@+id/fragment2"
         android:name="com.example.arcorediscogs.ImageTrackingFragment"
-        android:layout_width="412dp"
+        android:layout_width="match_parent"
         android:layout_height="619dp"
         android:layout_gravity="center"
         app:layout_anchor="@+id/fragment2"

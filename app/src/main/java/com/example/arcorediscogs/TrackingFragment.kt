@@ -36,7 +36,7 @@ class TrackingFragment : ArFragment() {
     ) {
         val augmentedImageDb = AugmentedImageDatabase(session)
         val assetManager = context!!.assets
-        listOf("BladeRunnerOST", "boniver").forEach {
+        listOf("Vangelis - Blade Runner", "Bon Iver - Bon Iver").forEach {
             val inputStream = assetManager.open("$it.jpg")
             val augmentedImageBitmap =
                 BitmapFactory.decodeStream(inputStream)

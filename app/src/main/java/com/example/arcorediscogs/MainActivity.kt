@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val imgTrackingFragment = ImageTrackingFragment()
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragment2, imgTrackingFragment)
+            replace(R.id.fragment2, mainFrag())
             commit()
         }
 
@@ -28,12 +28,20 @@ class MainActivity : AppCompatActivity() {
             Log.d("FYI", viewModel.totalHits.toString())
             // viewModel.hitcountquery(name = it.artist.toString())
         })
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener {
+            Log.d("mAct", "Fab clicked")
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment2, ImageTrackingFragment())
+                commit()
+            }
+        }
 
     }
 
-        fun search() {
-            Log.d("FYI", "toimiiko")
-            viewModel.hitcountquery("nirvana-nevermind")
+    fun search() {
+        Log.d("FYI", "toimiiko")
+        viewModel.hitcountquery("nirvana-nevermind")
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
