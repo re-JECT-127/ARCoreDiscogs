@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val imgTrackingFragment = ImageTrackingFragment()
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment2, imgTrackingFragment)
@@ -35,16 +35,26 @@ class MainActivity : AppCompatActivity() {
             Log.d("FYI", "toimiiko")
             viewModel.hitcountquery("nirvana-nevermind")
             val jtn = "nirvana-nevermind"
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener {
+            Log.d("mAct", "Fab clicked")
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment2, ImageTrackingFragment())
+                commit()
+            }
+        }
 
         val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
 
         bottomAppBar.setNavigationOnClickListener {
+            Log.d("mAct", "Nav clicked")
             // Handle navigation icon press
         }
 
         bottomAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.search -> {
+                    Log.d("mAct", "Search clicked")
                     // Handle search icon press
                     true
                 }
@@ -52,6 +62,5 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
     }
 }
