@@ -36,7 +36,17 @@ class TrackingFragment : ArFragment() {
     ) {
         val augmentedImageDb = AugmentedImageDatabase(session)
         val assetManager = context!!.assets
-        listOf("Vangelis - Blade Runner", "Bon Iver - Bon Iver").forEach {
+        listOf(
+            "Vangelis - Blade Runner",
+            "Bon Iver - Bon Iver",
+            "Animal Collective - Merriweather Post Pavillion",
+            "Chris Christodolou (2) - Risk of Rain 2",
+            "Tame Impala - Lonerism",
+            "Tame Impala - Slow Rush",
+            "Mac Miller - Circles",
+            "Godspeed You Black Emperor! - F♯ A♯ ∞",
+            "Valve Studio Orchestra - Fight Songs The Music Of Team Fortress 2"
+        ).forEach {
             val inputStream = assetManager.open("$it.jpg")
             val augmentedImageBitmap =
                 BitmapFactory.decodeStream(inputStream)
