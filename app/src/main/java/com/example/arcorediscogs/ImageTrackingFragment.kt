@@ -1,8 +1,10 @@
 package com.example.arcorediscogs
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -20,6 +22,7 @@ import com.google.ar.sceneform.ux.TransformableNode
 class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     private lateinit var arFrag: ArFragment
     private var viewRenderable: ViewRenderable? = null
+    lateinit var webServiceRepository: WebServiceRepository
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,6 +44,12 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
 
     }
 
+
+    @NonNull open fun getSupportFragmentManager(): FragmentManager{
+        return getSupportFragmentManager()
+    }
+
+
     private fun frameUpdate() {
         val fitToScanImg = getView()?.findViewById<ImageView>(R.id.fitToScanImg)
         Log.d("OVC", "frameUpdate")
@@ -48,6 +57,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
         if (arFrame != null) {
             if (arFrame.camera.trackingState != TrackingState.TRACKING) return
         }
+
 
         val updatedAugmentedImages =
             arFrame?.getUpdatedTrackables(AugmentedImage::class.java)
@@ -84,6 +94,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                             imgNode.setParent(anchorNode)
                             viewRenderable?.view?.findViewById<TextView>(R.id.txtImgTrack)?.text =
                                 it.name
+                            webServiceRepository.title = it.name
                             imgNode.renderable = viewRenderable
 
                         }
