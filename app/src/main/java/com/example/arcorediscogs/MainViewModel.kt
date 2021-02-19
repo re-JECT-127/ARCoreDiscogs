@@ -8,7 +8,7 @@ import androidx.lifecycle.switchMap
 import kotlinx.coroutines.Dispatchers
 
 class MainViewModel: ViewModel() {
-    private val repository: WebServiceRepository = WebServiceRepository(title = "")
+    private val repository: WebServiceRepository = WebServiceRepository()
     private val query = MutableLiveData<String>()
 
      fun hitcountquery(name: String){

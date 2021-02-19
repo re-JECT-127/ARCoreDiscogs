@@ -36,6 +36,24 @@ class MainActivity : AppCompatActivity() {
                 commit()
             }
         }
+        val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
+
+        bottomAppBar.setNavigationOnClickListener {
+            Log.d("mAct", "Nav clicked")
+            // Handle navigation icon press
+        }
+        bottomAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.search -> {
+                    Log.d("mAct", "Search clicked")
+                    // Handle search icon press
+                    search()
+                    true
+                }
+
+                else -> false
+            }
+        }
 
     }
 
@@ -52,23 +70,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
 
-        bottomAppBar.setNavigationOnClickListener {
-            Log.d("mAct", "Nav clicked")
-            // Handle navigation icon press
-        }
 
-        bottomAppBar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.search -> {
-                    Log.d("mAct", "Search clicked")
-                    // Handle search icon press
-                    true
-                }
 
-                else -> false
-            }
-        }
     }
 }
