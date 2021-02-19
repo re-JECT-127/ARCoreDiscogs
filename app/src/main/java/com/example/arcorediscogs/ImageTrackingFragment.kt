@@ -52,6 +52,9 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     }
 
 
+    @NonNull open fun getSupportFragmentManager(): FragmentManager{
+        return getSupportFragmentManager()
+    }
 
 
     private fun frameUpdate() {
