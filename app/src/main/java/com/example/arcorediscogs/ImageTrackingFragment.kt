@@ -81,6 +81,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                         if (anchors.isEmpty()) {
                             if (fitToScanImg != null) {
                                 fitToScanImg.visibility = View.GONE
+                                Log.d("TRK","fitToScanImg not Null")
                             }
                             // Create anchor and anchor node in the center of the image.
                             val pose = it.centerPose
@@ -88,12 +89,15 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                             val anchorNode = AnchorNode(anchor)
                             //Attach anchor node in the scene
                             anchorNode.setParent(arFrag.arSceneView.scene)
+                            Log.d("TRK","Anchor Node Attached.")
                             // Create a node as a child node of anchor node, and define node's renderable according to augmented image
                             val imgNode = TransformableNode(arFrag.transformationSystem)
                             imgNode.setParent(anchorNode)
+                            Log.d("TRK","Child node created")
                             viewRenderable?.view?.findViewById<TextView>(R.id.txtImgTrack)?.text =
                                 it.name
                             stinkler.title = it.name
+                            Log.d("TRK","Tracking ${it.name}")
                             imgNode.renderable = viewRenderable
 
                         }

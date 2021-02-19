@@ -27,6 +27,7 @@ class TrackingFragment : ArFragment() {
         val config = super.getSessionConfiguration(session)
         // Create image database and set it as a part of session configuration
         setupAugmentedImageDatabase(config, session)
+        config.focusMode = Config.FocusMode.AUTO
         return config
     }
 
