@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val imgTrackingFragment = ImageTrackingFragment()
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment2, mainFrag())
             commit()
@@ -59,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
     fun search() {
         Log.d("FYI", "toimiiko")
-        viewModel.hitcountquery("nirvana-nevermind")
+
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
