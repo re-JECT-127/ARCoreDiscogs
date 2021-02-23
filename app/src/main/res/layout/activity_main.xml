@@ -7,6 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="match_parent"
+        android:layout_height="537dp"
+        android:layout_centerHorizontal="true"
+        android:maxWidth="12dp"
+        android:maxHeight="12dp"
+        android:minWidth="12dp"
+        android:minHeight="12dp"
+        android:scaleX="0.1"
+        android:scaleY="0.1" />
+
     <!-- Note: A RecyclerView can also be used -->
 
     <com.google.android.material.bottomappbar.BottomAppBar
