@@ -2,7 +2,6 @@ package com.example.arcorediscogs
 
 class WebServiceRepository() {
 
-    lateinit var stinkler: stinkler
     private val call = DiscogsApi.service
 
 

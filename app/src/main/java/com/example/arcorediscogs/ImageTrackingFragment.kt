@@ -23,7 +23,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     private lateinit var arFrag: ArFragment
     private var viewRenderable: ViewRenderable? = null
 
-    lateinit var stinkler: stinkler
+
     lateinit var viewModel: MainViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,9 +52,6 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     }
 
 
-    @NonNull open fun getSupportFragmentManager(): FragmentManager{
-        return getSupportFragmentManager()
-    }
 
 
     private fun frameUpdate() {
