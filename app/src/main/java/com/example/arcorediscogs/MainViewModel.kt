@@ -10,11 +10,14 @@ import kotlinx.coroutines.Dispatchers
 class MainViewModel: ViewModel() {
     private val repository: WebServiceRepository = WebServiceRepository()
     private val query = MutableLiveData<String>()
-
+    private val tracklisQuery = MutableLiveData<Int>()
      fun hitcountquery(name: String){
         Log.d("FYI", name)
         query.value = name
 
+    }
+    fun masterRelease(id: Int){
+        tracklisQuery.value = id
     }
 
     val totalHits = query.switchMap {
@@ -23,4 +26,10 @@ class MainViewModel: ViewModel() {
             emit(retrievedHits)
         }
     }
-}
+    val tracklist = tracklisQuery.switchMap {
+        liveData(Dispatchers.IO) {
+            val retrievedList = repository.getRelease(it)
+            emit(retrievedList)
+        }
+    }
+    }

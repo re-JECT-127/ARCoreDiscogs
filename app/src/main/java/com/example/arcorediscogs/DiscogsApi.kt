@@ -8,16 +8,42 @@ import retrofit2.http.Query
 
 object DiscogsApi {
     const val URL = "https://api.discogs.com/database/"
+
     object Model {
         data class Result(@SerializedName("results") val results: List<Results>)
-        data class Results(@SerializedName("thumb") val thumb: String)
+        data class Results(@SerializedName("master_id") val master_id: Int)
+
     }
+
     interface Service {
         @GET("search")
         suspend fun artist(@Query("type") master: String, @Query("title") title: String, @Query("token") token: String): Model.Result
+
     }
+
     private val retrofit = Retrofit.Builder()
         .baseUrl(URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    val service = retrofit.create(Service::class.java)
+}
+
+
+object DiscogsApi2 {
+
+    const val releaseURL = "https://api.discogs.com/masters/"
+
+    object Tracklist  {
+        data class Result(@SerializedName("id") val id: Int)
+
+    }
+    interface Service {
+        @GET("release")
+        suspend fun release(@Query("master_id") master_id: Int): Tracklist.Result
+    }
+
+    private val retrofit = Retrofit.Builder()
+        .baseUrl(releaseURL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     val service = retrofit.create(Service::class.java)

@@ -47,8 +47,16 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
         viewModel.totalHits.observe(this, Observer {
             Log.d("FYI", it.results[0].toString())
             Log.d("FYI", viewModel.totalHits.toString())
+
             // viewModel.hitcountquery(name = it.artist.toString())
         })
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel.tracklist.observe(this, Observer {
+
+            Log.d("FYI", viewModel.tracklist.toString())
+            // viewModel.hitcountquery(name = it.artist.toString())
+        })
+
     }
 
 
