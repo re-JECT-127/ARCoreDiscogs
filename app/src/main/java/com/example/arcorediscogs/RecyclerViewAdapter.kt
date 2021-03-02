@@ -1,3 +1,4 @@
+/*
 package com.example.arcorediscogs
 
 import android.view.LayoutInflater
@@ -26,4 +27,4 @@ class SearchResultViewHolder(itemView: View) :
              //... e.g. update user details fragment
                }
          }
-     }
+     }*/

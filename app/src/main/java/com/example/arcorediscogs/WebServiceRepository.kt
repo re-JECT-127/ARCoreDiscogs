@@ -6,5 +6,5 @@ class WebServiceRepository() {
 
 
     suspend fun getUser(totalHits: String) =
-        call.artist("query", "$totalHits", "VfMCuKxEDTPpcrbKIpfmjhjEaGFntFhMXligFOol")
+        call.artist("master", "$totalHits", "VfMCuKxEDTPpcrbKIpfmjhjEaGFntFhMXligFOol")
 }

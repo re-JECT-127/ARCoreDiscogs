@@ -14,7 +14,7 @@ object DiscogsApi {
     }
     interface Service {
         @GET("search")
-        suspend fun artist(@Query("q") query: String, @Query("title") title: String, @Query("token") token: String): Model.Result
+        suspend fun artist(@Query("type") master: String, @Query("title") title: String, @Query("token") token: String): Model.Result
     }
     private val retrofit = Retrofit.Builder()
         .baseUrl(URL)

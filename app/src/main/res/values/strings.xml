@@ -14,4 +14,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="button_placeholder">placeholder</string>
     <string name="ar_search">AR Search</string>
+    <string name="fab">Scan Record Button</string>
+    <string name="scan_button">Scan Button</string>
 </resources>

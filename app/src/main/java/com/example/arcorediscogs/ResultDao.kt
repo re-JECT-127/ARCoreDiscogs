@@ -1,3 +1,5 @@
+/*
+
 package com.example.arcorediscogs
 
 import androidx.lifecycle.LiveData
@@ -20,3 +22,5 @@ interface ResultDao {
     @Delete
     fun delete(result: Result)
 }
+
+*/

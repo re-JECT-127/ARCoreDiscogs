@@ -1,10 +1,10 @@
+/*
 package com.example.arcorediscogs
 
-import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(foreignKeys = [(ForeignKey(
+@androidx.room.Entity(foreignKeys = [(ForeignKey(
     entity = Result::class,
     onDelete = ForeignKey.CASCADE,
     parentColumns = ["id"],
@@ -21,4 +21,4 @@ data class TracklistInfo(
     val writer: String,
     @PrimaryKey
     val value: String
-)
+)*/

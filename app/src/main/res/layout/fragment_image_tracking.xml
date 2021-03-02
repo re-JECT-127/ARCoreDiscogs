@@ -16,13 +16,6 @@
         />
     <!-- note: own implementation that override ArFragment -->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="390dp"
-        android:layout_height="96dp"
-        android:text="TextView"
-        android:layout_gravity="center"/>
-
     <ImageView
         android:id="@+id/fitToScanImg"
         android:layout_width="match_parent"

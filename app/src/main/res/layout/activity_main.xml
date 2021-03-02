@@ -35,7 +35,7 @@
         android:id="@+id/fragment2"
         android:name="com.example.arcorediscogs.ImageTrackingFragment"
         android:layout_width="match_parent"
-        android:layout_height="534dp"
+        android:layout_height="538dp"
         android:layout_gravity="center"
         app:layout_anchor="@+id/fragment2"
         app:layout_anchorGravity="center" />
@@ -44,7 +44,7 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/todo"
+        android:contentDescription="@string/fab"
         app:layout_anchor="@id/bottomAppBar"
         app:srcCompat="@drawable/ic_add_24dp" />
 

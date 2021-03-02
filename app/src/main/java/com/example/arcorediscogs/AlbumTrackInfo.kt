@@ -1,3 +1,4 @@
+/*
 package com.example.arcorediscogs
 
 import androidx.room.Embedded
@@ -8,4 +9,4 @@ class AlbumTrackInfo{
     var result: Result? = null
     @Relation(parentColumn = "id", entityColumn = "result")
     var contacts: List<TracklistInfo>? = null
-}
+}*/

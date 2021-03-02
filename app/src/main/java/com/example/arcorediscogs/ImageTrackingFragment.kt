@@ -58,7 +58,6 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
         val fitToScanImg = getView()?.findViewById<ImageView>(R.id.fitToScanImg)
         Log.d("OVC", "frameUpdate")
         val arFrame = arFrag.arSceneView.arFrame
-        val text = getView()?.findViewById<TextView>(R.id.textView)
         if (arFrame != null) {
             if (arFrame.camera.trackingState != TrackingState.TRACKING) return
         }
@@ -109,7 +108,6 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                                 it.name
                             Log.d("OVC", "2")
 
-                                text?.text = it.name
 
                             viewModel.hitcountquery("${it.name}")
                             Log.d("OVC", "toimiigö ${it.name}")
