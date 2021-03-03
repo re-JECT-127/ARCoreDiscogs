@@ -1,4 +1,4 @@
-/*
+
 
 package com.example.arcorediscogs
 
@@ -24,4 +24,4 @@ abstract class ResultDB: RoomDatabase() {
         }
     }
 }
-*/
+

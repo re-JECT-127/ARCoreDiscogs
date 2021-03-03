@@ -4,7 +4,9 @@ import com.google.gson.annotations.SerializedName
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.QueryName
 
 object DiscogsApi {
     const val URL = "https://api.discogs.com/database/"
@@ -31,15 +33,16 @@ object DiscogsApi {
 
 object DiscogsApi2 {
 
-    const val releaseURL = "https://api.discogs.com/masters/"
+    const val releaseURL = "https://api.discogs.com/"
 
     object Tracklist  {
         data class Result(@SerializedName("id") val id: Int)
 
     }
     interface Service {
-        @GET("release")
-        suspend fun release(@Query("master_id") master_id: Int): Tracklist.Result
+
+        @GET("masters")
+        suspend fun release(@Path("master_id") master_id: Int): Tracklist.Result
     }
 
     private val retrofit = Retrofit.Builder()

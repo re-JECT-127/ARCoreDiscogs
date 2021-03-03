@@ -1,4 +1,4 @@
-/*
+
 
 package com.example.arcorediscogs
 
@@ -11,7 +11,7 @@ interface ResultDao {
     fun getAll(): LiveData<List<Result>>
 
     @Query("SELECT * FROM result WHERE result.id = :resultid")
-    fun getUserContacts(resultid: Int): AlbumTrackInfo
+    fun getAlbumTrackInfo(resultid: Int): AlbumTrackInfo
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(result: Result): Long
@@ -23,4 +23,4 @@ interface ResultDao {
     fun delete(result: Result)
 }
 
-*/
+

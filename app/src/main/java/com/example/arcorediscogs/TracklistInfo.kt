@@ -1,4 +1,4 @@
-/*
+
 package com.example.arcorediscogs
 
 import androidx.room.ForeignKey
@@ -21,4 +21,4 @@ data class TracklistInfo(
     val writer: String,
     @PrimaryKey
     val value: String
-)*/
+)

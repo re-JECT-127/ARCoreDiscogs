@@ -1,4 +1,4 @@
-/*
+
 package com.example.arcorediscogs
 
 import android.view.LayoutInflater
@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 class SearchResultViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView)
 
- class SearchResultAdapter(private val items: List<User>?) :
+ class SearchResultAdapter(private val items: List<Result>?) :
     RecyclerView.Adapter<SearchResultViewHolder>() {
 
      override fun onCreateViewHolder(parent: ViewGroup,
                                      viewType: Int) = SearchResultViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.item,
+        LayoutInflater.from(parent.context).inflate(R.layout.item_view,
             parent, false))
 
      override fun getItemCount() = items?.size ?: 0
@@ -27,4 +27,4 @@ class SearchResultViewHolder(itemView: View) :
              //... e.g. update user details fragment
                }
          }
-     }*/
+     }

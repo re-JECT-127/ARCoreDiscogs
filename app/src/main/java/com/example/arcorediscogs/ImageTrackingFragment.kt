@@ -17,13 +17,15 @@ import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     private lateinit var arFrag: ArFragment
     private var viewRenderable: ViewRenderable? = null
     private var master = ""
-
+    private val db by lazy {ResultDB.get(requireContext())}
     lateinit var viewModel: MainViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,6 +50,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             Log.d("FYI", it.results[0].toString())
             Log.d("FYI", viewModel.totalHits.toString())
             master = viewModel.totalHits.toString()
+            GlobalScope.launch { val id = db.resultDao().insert(Result("${it.results[0]}", "jdasjod", "dawd", "dad", "ddada", "dfafdqafa")) }
             viewModel.masterRelease(id = master.toInt())
             // viewModel.hitcountquery(name = it.artist.toString())
         })
