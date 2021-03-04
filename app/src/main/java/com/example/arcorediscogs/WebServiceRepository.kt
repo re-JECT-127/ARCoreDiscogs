@@ -3,7 +3,7 @@ package com.example.arcorediscogs
 class WebServiceRepository() {
 
     private val call = DiscogsApi.service
-    private val call2 = DiscogsApi2.service
+    private val call2 = DiscogsApi.service2
 
     suspend fun getUser(totalHits: String) =
         call.artist("master", "$totalHits", "VfMCuKxEDTPpcrbKIpfmjhjEaGFntFhMXligFOol")

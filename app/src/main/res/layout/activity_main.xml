@@ -17,8 +17,8 @@
         android:maxHeight="12dp"
         android:minWidth="12dp"
         android:minHeight="12dp"
-        android:scaleX="0.1"
-        android:scaleY="0.1" />
+        android:scaleX="0.2"
+        android:scaleY="0.2" />
 
     <!-- Note: A RecyclerView can also be used -->
 
@@ -35,7 +35,7 @@
         android:id="@+id/fragment2"
         android:name="com.example.arcorediscogs.ImageTrackingFragment"
         android:layout_width="match_parent"
-        android:layout_height="538dp"
+        android:layout_height="638dp"
         android:layout_gravity="center"
         app:layout_anchor="@+id/fragment2"
         app:layout_anchorGravity="center" />

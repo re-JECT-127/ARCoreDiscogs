@@ -49,9 +49,11 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
         viewModel.totalHits.observe(this, Observer {
             Log.d("FYI", it.results[0].toString())
             Log.d("FYI", viewModel.totalHits.toString())
-            master = viewModel.totalHits.toString()
+            master = it.results[0].toString().split("=")[1].split(")")[0]
+            Log.d("FYI", master)
+
             GlobalScope.launch { val id = db.resultDao().insert(Result("${it.results[0]}", "jdasjod", "dawd", "dad", "ddada", "dfafdqafa")) }
-            viewModel.masterRelease(id = master.toInt())
+
             // viewModel.hitcountquery(name = it.artist.toString())
         })
         fun String.toInt(): Int{
