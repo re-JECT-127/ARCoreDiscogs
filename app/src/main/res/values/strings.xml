@@ -16,4 +16,5 @@
     <string name="ar_search">AR Search</string>
     <string name="fab">Scan Record Button</string>
     <string name="scan_button">Scan Button</string>
+    <string name="barcode_scanner">BARCODE SCANNER</string>
 </resources>

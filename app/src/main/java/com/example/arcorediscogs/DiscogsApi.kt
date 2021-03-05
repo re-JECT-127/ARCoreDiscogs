@@ -13,7 +13,7 @@ object DiscogsApi {
 
     object Model {
         data class Result(@SerializedName("results") val results: List<Results>)
-        data class Results(@SerializedName("master_id") val master_id: Int)
+        data class Results(@SerializedName("master_id") val master_id: String)
 
     }
 
@@ -28,7 +28,7 @@ object DiscogsApi {
     }
 
     interface Service2 {
-        @GET("masters")
+        @GET("masters/{master_id}")
         suspend fun release(@Path("master_id") master_id: Int): DiscogsApi.Tracklist.Result
     }
 
