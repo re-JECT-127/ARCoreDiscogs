@@ -54,6 +54,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             Log.d("FYI", viewModel.totalHits.toString())
             master = it.results[0].toString().split("=")[1].split(")")[0]
             Log.d("FYI", master)
+            Log.d("FYI", it.results.toString())
 
 
             // viewModel.hitcountquery(name = it.artist.toString())

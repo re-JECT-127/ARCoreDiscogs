@@ -13,8 +13,7 @@ object DiscogsApi {
 
     object Model {
         data class Result(@SerializedName("results") val results: List<Results>)
-        data class Results(@SerializedName("master_id") val master_id: String)
-
+        data class Results(@SerializedName("master_id") val master_id: String, @SerializedName("title") val title: String, @SerializedName("genre") val genre: List<String>)
     }
 
     interface Service {

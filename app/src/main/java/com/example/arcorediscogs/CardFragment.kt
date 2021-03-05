@@ -1,3 +1,4 @@
+/*
 package com.example.arcorediscogs
 
 import android.os.Bundle
@@ -22,3 +23,4 @@ class CardFragment : Fragment(R.layout.fragment_card) {
         })
     }
     }
+*/
