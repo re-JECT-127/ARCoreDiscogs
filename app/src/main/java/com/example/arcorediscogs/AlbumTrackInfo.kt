@@ -7,6 +7,6 @@ import androidx.room.Relation
 class AlbumTrackInfo{
     @Embedded
     var result: Result? = null
-    @Relation(parentColumn = "id", entityColumn = "result")
+    @Relation(parentColumn = "id", entityColumn = "master_id")
     var contacts: List<TracklistInfo>? = null
 }

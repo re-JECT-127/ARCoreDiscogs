@@ -7,7 +7,7 @@ import java.net.URL
 @Entity
 data class Result(
     @PrimaryKey(autoGenerate = true)
-    val id: String,
+    val id: Int,
     val album : String,
     val artist: String,
     val genre: String,

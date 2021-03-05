@@ -1,6 +1,7 @@
 
 package com.example.arcorediscogs
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,10 +22,11 @@ class SearchResultViewHolder(itemView: View) :
 
      override fun onBindViewHolder(holder: SearchResultViewHolder,
                                     position: Int) {
-         holder.itemView.textView.text =
-        items?.get(position).toString()
+       //  holder.itemView.textView.text =
+       // items?.get(position).toString()
          holder.itemView.setOnClickListener {
              //... e.g. update user details fragment
                }
          }
      }
+

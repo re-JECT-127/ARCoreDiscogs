@@ -3,6 +3,7 @@ package com.example.arcorediscogs
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -44,15 +45,16 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             null
         }
         arFrag.arSceneView.scene.addOnUpdateListener { frameUpdate() }
-
+        val btn = getView()?.findViewById<Button>(R.id.button2)
+        btn?.setOnClickListener { GlobalScope.launch { val id = db.resultDao().insert(Result(5435345, "jdasjod", "dawd", "dad", "ddada", "dfafdqafa")) }
+        }
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.totalHits.observe(this, Observer {
+        viewModel.totalHits.observe(viewLifecycleOwner, Observer {
             Log.d("FYI", it.results[0].toString())
             Log.d("FYI", viewModel.totalHits.toString())
             master = it.results[0].toString().split("=")[1].split(")")[0]
             Log.d("FYI", master)
 
-            GlobalScope.launch { val id = db.resultDao().insert(Result("${it.results[0]}", "jdasjod", "dawd", "dad", "ddada", "dfafdqafa")) }
 
             // viewModel.hitcountquery(name = it.artist.toString())
         })
@@ -60,7 +62,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             return master.toInt()
         }
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.tracklist.observe(this, Observer {
+        viewModel.tracklist.observe(viewLifecycleOwner, Observer {
 
             Log.d("FYI", viewModel.tracklist.toString())
             // viewModel.hitcountquery(name = it.artist.toString())
