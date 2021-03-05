@@ -8,16 +8,16 @@
 
     <Button
         android:id="@+id/button3"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:text="@string/button"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/scan_button"
+        android:text="@string/barcode_scanner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/scan_button"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 
         />
 
