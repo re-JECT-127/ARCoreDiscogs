@@ -34,8 +34,8 @@ class CardFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
             val rv_results = view?.findViewById<RecyclerView>(R.id.rv_results)
-        rv_results.layoutManager = LinearLayoutManager(requireContext())
-        rv_results.adapter = SearchResultAdapter()
+        rv_results?.layoutManager = LinearLayoutManager(requireContext())
+        rv_results?.adapter = SearchResultAdapter()
         }
     }
 
