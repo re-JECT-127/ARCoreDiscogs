@@ -26,13 +26,13 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     private lateinit var arFrag: ArFragment
     private var viewRenderable: ViewRenderable? = null
     private var master = ""
-    private val db by lazy {ResultDB.get(requireContext())}
+    private val db by lazy { ResultDB.get(requireContext()) }
     lateinit var viewModel: MainViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("OVC", "onViewCreated: done")
         arFrag = childFragmentManager.findFragmentById(R.id.fragArImg) as ArFragment
-        Log.d("OVC","Test $arFrag")
+        Log.d("OVC", "Test $arFrag")
         val renderableFuture = ViewRenderable.builder()
             .setView(requireContext(), R.layout.view_renderable)
             .build()
@@ -46,8 +46,6 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
         }
         arFrag.arSceneView.scene.addOnUpdateListener { frameUpdate() }
         val btn = getView()?.findViewById<Button>(R.id.button2)
-        btn?.setOnClickListener { GlobalScope.launch { val id = db.resultDao().insert(Result(5435345, "jdasjod", "dawd", "dad", "ddada", "dfafdqafa")) }
-        }
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.totalHits.observe(viewLifecycleOwner, Observer {
             Log.d("FYI", it.results.toString())
@@ -56,23 +54,53 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             Log.d("FYI", master)
 
             viewModel.masterRelease(id = master.toInt())
-            GlobalScope.launch { val id = db.resultDao().insert(Result(master.toInt(), it.results[0].title.split("-")[0], it.results[0].title.split("-")[1], it.results[0].genre[0], it.results[0].year, it.results[0].thumb))}
+            GlobalScope.launch {
+                val id = db.resultDao().insert(
+                    Result(
+                        master.toInt(),
+                        it.results[0].title.split("-")[0],
+                        it.results[0].title.split("-")[1],
+                        it.results[0].genre[0],
+                        it.results[0].year,
+                        it.results[0].thumb
+                    )
+                )
+            }
 
             // viewModel.hitcountquery(name = it.artist.toString())
         })
-        fun String.toInt(): Int{
-            return master.toInt()
-        }
+
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.tracklist.observe(viewLifecycleOwner, Observer {
             Log.d("FYI", it.toString())
+            var mArray = arrayOf(it.tracklist)
+            var a = it.tracklist.size
+            var b = 0
+            Log.d("FYI", "$a")
+            for (i in it.tracklist) {
+                GlobalScope.launch {
+                    val master_id = db.tracklistInfoDao().insert(
+                        TracklistInfo(
+                            master.toInt(),
+                            it.tracklist[b].title,
+                            it.tracklist[b].position,
+                            it.tracklist[b].title,
+                            it.tracklist[b].duration,
+                            master + "_" + it.tracklist[b].position
+                        )
+                    )
+                    b++
+                }
+
+            }
             Log.d("FYI", viewModel.tracklist.toString())
             // viewModel.hitcountquery(name = it.artist.toString())
         })
+        fun String.toInt(): Int {
+            return master.toInt()
+        }
 
     }
-
-
 
 
     private fun frameUpdate() {
@@ -89,9 +117,10 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             updatedAugmentedImages.forEach {
                 Log.d("OVC", "frameUpdate images $it")
                 when (it.trackingState) {
-                    null -> {Log.d("FYI", "meneekö tähän")
-                        return@forEach}
-
+                    null -> {
+                        Log.d("FYI", "meneekö tähän")
+                        return@forEach
+                    }
 
 
                     TrackingState.PAUSED -> {
@@ -137,7 +166,9 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                         }
 
                     }
-                    else -> {Log.d("OVC", "toimiiko")}
+                    else -> {
+                        Log.d("OVC", "toimiiko")
+                    }
                 }
             }
         }

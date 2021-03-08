@@ -16,11 +16,6 @@ data class TracklistInfo(
     val trackNumb: String,
     val song: String,
     val duration: String,
-    val mixer: String,
-    val mixerAssistant: String,
-    val producer: String,
-    val vocalsAdditional: String,
-    val writer: String,
     @PrimaryKey
     val value: String
 )
