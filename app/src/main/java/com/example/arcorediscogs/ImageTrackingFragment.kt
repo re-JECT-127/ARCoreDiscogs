@@ -77,8 +77,9 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             var a = it.tracklist.size
             var b = 0
             Log.d("FYI", "$a")
+            GlobalScope.launch {
             for (i in it.tracklist) {
-                GlobalScope.launch {
+
                     val master_id = db.tracklistInfoDao().insert(
                         TracklistInfo(
                             master.toInt(),
