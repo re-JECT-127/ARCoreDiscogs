@@ -5,14 +5,14 @@ package com.example.arcorediscogs
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class SearchResultViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView)
 
- class SearchResultAdapter(private val items: List<Result>?) :
-    RecyclerView.Adapter<SearchResultViewHolder>() {
-
+ class SearchResultAdapter() : RecyclerView.Adapter<SearchResultViewHolder>() {
+     private var items: List<TracklistInfo>? = null
      override fun onCreateViewHolder(parent: ViewGroup,
                                      viewType: Int) = SearchResultViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_view,
@@ -22,11 +22,15 @@ class SearchResultViewHolder(itemView: View) :
 
      override fun onBindViewHolder(holder: SearchResultViewHolder,
                                     position: Int) {
-       //  holder.itemView.textView.text =
-       // items?.get(position).toString()
-         holder.itemView.setOnClickListener {
-             //... e.g. update user details fragment
-               }
-         }
+         val textView: TextView = holder.itemView.findViewById(R.id.textView2)
+         textView.text = items?.get(position).toString()
+         val textView2: TextView = holder.itemView.findViewById(R.id.textView3)
+         textView2.text = items?.get(position).toString()
+         val textView3: TextView = holder.itemView.findViewById(R.id.textView4)
+         textView3.text = items?.get(position).toString()
+
+
+
+     }
      }
 

@@ -1,6 +1,7 @@
 package com.example.arcorediscogs
 
 import android.os.Bundle
+import android.text.TextUtils.replace
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -95,6 +96,10 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
 
             }
             Log.d("FYI", viewModel.tracklist.toString())
+            childFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment2, CardFragment())
+                commit()
+            }
             // viewModel.hitcountquery(name = it.artist.toString())
         })
         fun String.toInt(): Int {
