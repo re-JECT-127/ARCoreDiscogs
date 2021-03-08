@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.google.ar.sceneform.ux.ArFragment
 
@@ -30,5 +31,11 @@ class mainFrag : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.mainfrag, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var barButt = getView()?.findViewById<Button>(R.id.button3)
+    }
+
 
 }

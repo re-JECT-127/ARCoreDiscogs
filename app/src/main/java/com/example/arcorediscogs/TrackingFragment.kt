@@ -40,13 +40,9 @@ class TrackingFragment : ArFragment() {
         listOf(
             "Vangelis - Blade Runner",
             "Bon Iver - Bon Iver",
-            "Animal Collective - Merriweather Post Pavillion",
-            "Chris Christodoulou (2) - Risk Of Rain 2",
             "Tame Impala - Lonerism",
             "Tame Impala - Slow Rush",
-            "Mac Miller - Circles",
-            "Godspeed You Black Emperor! - F♯ A♯ ∞",
-            "Valve Studio Orchestra - Fight Songs The Music Of Team Fortress 2"
+            "Mac Miller - Circles"
         ).forEach {
             val inputStream = assetManager.open("$it.jpg")
             val augmentedImageBitmap =

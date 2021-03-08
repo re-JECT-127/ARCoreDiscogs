@@ -50,12 +50,13 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
         }
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.totalHits.observe(viewLifecycleOwner, Observer {
-            Log.d("FYI", it.results[0].toString())
-            Log.d("FYI", viewModel.totalHits.toString())
-            master = it.results[0].toString().split("=")[1].split(")")[0]
-            Log.d("FYI", master)
             Log.d("FYI", it.results.toString())
+            Log.d("FYI", viewModel.totalHits.toString())
+            master = it.results[0].toString().split("=")[1].split(")")[0].split(",")[0]
+            Log.d("FYI", master)
 
+            viewModel.masterRelease(id = master.toInt())
+            GlobalScope.launch { val id = db.resultDao().insert(Result(master.toInt(), it.results[0].title.split("-")[0], it.results[0].title.split("-")[1], it.results[0].genre[0], it.results[0].year, it.results[0].thumb))}
 
             // viewModel.hitcountquery(name = it.artist.toString())
         })
@@ -64,7 +65,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
         }
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.tracklist.observe(viewLifecycleOwner, Observer {
-
+            Log.d("FYI", it.toString())
             Log.d("FYI", viewModel.tracklist.toString())
             // viewModel.hitcountquery(name = it.artist.toString())
         })

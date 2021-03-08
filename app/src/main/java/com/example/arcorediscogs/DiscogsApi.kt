@@ -7,13 +7,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 object DiscogsApi {
     const val URL = "https://api.discogs.com/"
 
     object Model {
         data class Result(@SerializedName("results") val results: List<Results>)
-        data class Results(@SerializedName("master_id") val master_id: String, @SerializedName("title") val title: String, @SerializedName("genre") val genre: List<String>)
+        data class Results(
+            @SerializedName("master_id") val master_id: String,
+            @SerializedName("title") val title: String,
+            @SerializedName("genre") val genre: List<String>,
+            @SerializedName("year") val year: String,
+            @SerializedName("thumb") val thumb: String
+        )
     }
 
     interface Service {
@@ -32,7 +39,13 @@ object DiscogsApi {
     }
 
     object Tracklist {
-        data class Result(@SerializedName("id") val id: Int)
+        data class Result(@SerializedName("tracklist") val tracklist: List<Tracklistt>)
+        data class Tracklistt(
+            @SerializedName("position") val position: String,
+            @SerializedName("title") val title: String,
+            @SerializedName("duration") val duration: String
+        )
+
 
     }
 
