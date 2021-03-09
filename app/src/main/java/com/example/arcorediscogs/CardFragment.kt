@@ -36,8 +36,13 @@ class CardFragment(var id: Long = 0) : Fragment() {
         val db by lazy { ResultDB.get(fragmentView.context) }
         val albumresult: List<Result>?
         val albumtext = view?.findViewById<TextView>(R.id.textView5)
-            for ()
-
+        val artist = view?.findViewById<TextView>(R.id.textView6)
+        val genre = view?.findViewById<TextView>(R.id.textView7)
+        val released = view?.findViewById<TextView>(R.id.textView8)
+        albumtext?.text = db.resultDao().getAll().value?.get(id.toInt())?.album
+        artist?.text = db.resultDao().getAll().value?.get(id.toInt())?.artist
+        genre?.text = db.resultDao().getAll().value?.get(id.toInt())?.genre
+        released?.text = db.resultDao().getAll().value?.get(id.toInt())?.released
 
         return fragmentView
     }
