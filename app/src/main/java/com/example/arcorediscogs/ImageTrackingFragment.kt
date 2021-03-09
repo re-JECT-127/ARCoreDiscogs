@@ -2,7 +2,9 @@ package com.example.arcorediscogs
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -31,6 +33,17 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     private var stopTracking = false
     private val db by lazy { ResultDB.get(requireContext()) }
     lateinit var viewModel: MainViewModel
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        container?.removeAllViews()
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("OVC", "onViewCreated: done")
@@ -105,18 +118,20 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
 
             // viewModel.hitcountquery(name = it.artist.toString())
             stopTracking = true
+            (activity as MainActivity).returnFromImgFrag(master.toLong())
+
         })
         fun String.toInt(): Int {
             return master.toInt()
         }
 
     }
-    fun startCardFrag() {
+/*    fun startCardFrag() {
         childFragmentManager.beginTransaction().apply {
             replace(R.id.fragment2, CardFragment(master.toLong()))
             commit()
         }
-    }
+    }*/
 
 
     private fun frameUpdate() {
@@ -125,8 +140,6 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
         val arFrame = arFrag.arSceneView.arFrame
         if (arFrame != null && stopTracking == false) {
             if (arFrame.camera.trackingState != TrackingState.TRACKING) return
-        } else {
-            startCardFrag()
         }
 
 
@@ -172,8 +185,6 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                             // Create a node as a child node of anchor node, and define node's renderable according to augmented image
                             val imgNode = TransformableNode(arFrag.transformationSystem)
                             imgNode.setParent(anchorNode)
-                            viewRenderable?.view?.findViewById<TextView>(R.id.txtImgTrack)?.text =
-                                it.name
                             Log.d("OVC", "2")
 
 

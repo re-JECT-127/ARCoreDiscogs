@@ -12,8 +12,8 @@ import com.example.arcorediscogs.database.entity.TracklistInfo
 class SearchResultViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView)
 
- class SearchResultAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
-     private var items: List<TracklistInfo>? = null
+ class SearchResultAdapter(private val items: List<TracklistInfo>?) : RecyclerView.Adapter<SearchResultViewHolder>() {
+//     private var items: List<TracklistInfo>? = null
      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SearchResultViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_view,
             parent, false))

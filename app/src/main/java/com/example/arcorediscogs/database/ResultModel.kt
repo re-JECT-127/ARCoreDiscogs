@@ -18,6 +18,7 @@ class ResultModel(application: Application): AndroidViewModel(application) {
 
 
 }
+
 class TracklistInfoModel(application: Application, id: Long): AndroidViewModel(application) {
     private val tracks: LiveData<List<TracklistInfo>> = ResultDB.get(getApplication()).tracklistInfoDao().getAll(id)
     fun getTracks() = tracks

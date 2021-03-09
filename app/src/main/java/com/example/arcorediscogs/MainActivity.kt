@@ -1,22 +1,17 @@
 package com.example.arcorediscogs
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Fade
-import android.transition.Scene
-import android.transition.Transition
-import android.transition.TransitionManager
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ProgressBar
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.add
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -47,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             spinner.visibility = View.VISIBLE
             Log.d("mAct", "Fab clicked")
             supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment2, ImageTrackingFragment())
+                replace(R.id.fragment2, ImageTrackingFragment(),"1")
                 commit()
             }
         }
@@ -78,5 +73,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+    fun returnFromImgFrag(id:Long){
+        supportFragmentManager.beginTransaction().apply{
+            remove(supportFragmentManager.findFragmentByTag("1")!!)
+            replace(R.id.fragment2, CardFragment(id))
+            Log.d("FYI", "Tried to load Fragment $id")
+            commit()
+        }
     }
 }

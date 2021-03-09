@@ -31,14 +31,14 @@
         app:menu="@menu/bottom_app_bar"
         app:navigationIcon="@drawable/ic_menu_24dp" />
 
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment2"
-        android:name="com.example.arcorediscogs.ImageTrackingFragment"
         android:layout_width="match_parent"
         android:layout_height="638dp"
         android:layout_gravity="center"
         app:layout_anchor="@+id/fragment2"
         app:layout_anchorGravity="center" />
+    <!-- android:name="com.example.arcorediscogs.ImageTrackingFragment" -->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

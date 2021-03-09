@@ -7,7 +7,7 @@ import com.example.arcorediscogs.database.entity.TracklistInfo
 
 @Dao
 interface TracklistInfoDao {
-    @Query("SELECT * FROM tracklistinfo WHERE album = :resultid")
+    @Query("SELECT * FROM tracklistinfo WHERE master_id = :resultid")
     fun getAll(resultid: Long): LiveData<List<TracklistInfo>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

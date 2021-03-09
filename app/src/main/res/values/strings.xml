@@ -17,4 +17,5 @@
     <string name="fab">Scan Record Button</string>
     <string name="scan_button">Scan Button</string>
     <string name="barcode_scanner">BARCODE SCANNER</string>
+    <string name="Card_butt">CARD OPEN</string>
 </resources>
