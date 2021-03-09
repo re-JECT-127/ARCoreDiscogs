@@ -2,6 +2,7 @@
 package com.example.arcorediscogs
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,16 +19,18 @@ class SearchResultViewHolder(itemView: View) :
         LayoutInflater.from(parent.context).inflate(R.layout.item_view,
             parent, false))
 
+
      override fun getItemCount() = items?.size ?: 0
 
      override fun onBindViewHolder(holder: SearchResultViewHolder,
                                     position: Int) {
+         Log.d("FYI", "Itemlist $items")
          val textView: TextView = holder.itemView.findViewById(R.id.textView2)
-         textView.text = items?.get(position).toString()
+         textView.text = items?.get(position)?.trackNumb
          val textView2: TextView = holder.itemView.findViewById(R.id.textView3)
-         textView2.text = items?.get(position).toString()
+         textView2.text = items?.get(position)?.album
          val textView3: TextView = holder.itemView.findViewById(R.id.textView4)
-         textView3.text = items?.get(position).toString()
+         textView3.text = items?.get(position)?.duration
 
 
 

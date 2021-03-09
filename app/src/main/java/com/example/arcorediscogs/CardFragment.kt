@@ -12,17 +12,20 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.arcorediscogs.database.ResultDB
 import com.example.arcorediscogs.database.TrackListModelFactory
 import com.example.arcorediscogs.database.TracklistInfoModel
 import com.example.arcorediscogs.database.entity.Result
+import com.google.android.filament.Filament.init
 import kotlinx.android.synthetic.main.fragment_card.*
 
 
 class CardFragment(var id: Long = 0) : Fragment() {
-    private lateinit var recyclerView: RecyclerView
+
     private lateinit var fragmentView: View
-    private val tracks: List<Result>? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,10 +33,12 @@ class CardFragment(var id: Long = 0) : Fragment() {
         container?.removeAllViews()
         Log.d("FYI", "Test")
         fragmentView = inflater.inflate(R.layout.fragment_card, container, false)
+        val db by lazy { ResultDB.get(fragmentView.context) }
+        val albumresult: List<Result>?
+        val albumtext = view?.findViewById<TextView>(R.id.textView5)
+            for ()
 
-        val album = view?.findViewById<TextView>(R.id.textView5)
 
-        album?.text = tracks?.get(0)?.album
         return fragmentView
     }
 
@@ -44,6 +49,7 @@ class CardFragment(var id: Long = 0) : Fragment() {
          val viewMod = ViewModelProvider(this).get(trackListModel::class.java)
         viewMod.getTracks().observe(viewLifecycleOwner, {
             Log.d("FYI", "Adapter $it")
+            rv_results.layoutManager = LinearLayoutManager(requireContext())
             rv_results.adapter = SearchResultAdapter(it)})
             /*val rv_results = view?.findViewById<RecyclerView>(R.id.rv_results)
         rv_results?.layoutManager = LinearLayoutManager(requireContext())
