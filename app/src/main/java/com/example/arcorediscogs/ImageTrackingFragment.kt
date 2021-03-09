@@ -28,6 +28,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     private lateinit var arFrag: ArFragment
     private var viewRenderable: ViewRenderable? = null
     private var master = ""
+    private var stopTracking = false
     private val db by lazy { ResultDB.get(requireContext()) }
     lateinit var viewModel: MainViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -101,16 +102,20 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                     .commit()*/
             }
             Log.d("FYI", viewModel.tracklist.toString())
-            childFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment2, CardFragment(master.toLong()))
-                commit()
-            }
+
             // viewModel.hitcountquery(name = it.artist.toString())
+            stopTracking = true
         })
         fun String.toInt(): Int {
             return master.toInt()
         }
 
+    }
+    fun startCardFrag() {
+        childFragmentManager.beginTransaction().apply {
+            replace(R.id.fragment2, CardFragment(master.toLong()))
+            commit()
+        }
     }
 
 
@@ -118,8 +123,10 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
         val fitToScanImg = getView()?.findViewById<ImageView>(R.id.fitToScanImg)
         Log.d("OVC", "frameUpdate")
         val arFrame = arFrag.arSceneView.arFrame
-        if (arFrame != null) {
+        if (arFrame != null && stopTracking == false) {
             if (arFrame.camera.trackingState != TrackingState.TRACKING) return
+        } else {
+            startCardFrag()
         }
 
 
