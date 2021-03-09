@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+
     id "com.google.ar.sceneform.plugin"
 }
 
@@ -35,6 +37,9 @@ android {
 }
     apply plugin: "kotlin-kapt"
 dependencies {
+
+
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
     def lifecycle_version = "2.2.0"
      implementation "android.arch.lifecycle:extensions:$lifecycle_version"
      implementation "android.arch.lifecycle:runtime:$lifecycle_version"

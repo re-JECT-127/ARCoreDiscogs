@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -93,11 +94,15 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                     )
                     b++
                 }
-
+                Log.d("FYI", "adding to db done" )
+               /* val activity = view.context as AppCompatActivity
+                activity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment2, CardFragment(master.toLong())).addToBackStack(null)
+                    .commit()*/
             }
             Log.d("FYI", viewModel.tracklist.toString())
             childFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment2, CardFragment())
+                replace(R.id.fragment2, CardFragment(master.toLong()))
                 commit()
             }
             // viewModel.hitcountquery(name = it.artist.toString())

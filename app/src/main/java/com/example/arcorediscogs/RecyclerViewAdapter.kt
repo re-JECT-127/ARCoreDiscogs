@@ -14,8 +14,7 @@ class SearchResultViewHolder(itemView: View) :
 
  class SearchResultAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
      private var items: List<TracklistInfo>? = null
-     override fun onCreateViewHolder(parent: ViewGroup,
-                                     viewType: Int) = SearchResultViewHolder(
+     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SearchResultViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_view,
             parent, false))
 
