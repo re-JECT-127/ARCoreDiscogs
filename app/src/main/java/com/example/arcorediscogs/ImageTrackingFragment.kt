@@ -1,18 +1,18 @@
 package com.example.arcorediscogs
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.arcorediscogs.database.entity.Result
+import com.example.arcorediscogs.database.ResultDB
+import com.example.arcorediscogs.database.entity.TracklistInfo
 import com.google.ar.core.AugmentedImage
 import com.google.ar.core.TrackingState
 import com.google.ar.sceneform.AnchorNode

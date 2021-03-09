@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.arcorediscogs.database.entity.TracklistInfo
 
 class SearchResultViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView)
 
- class SearchResultAdapter() : RecyclerView.Adapter<SearchResultViewHolder>() {
+ class SearchResultAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
      private var items: List<TracklistInfo>? = null
      override fun onCreateViewHolder(parent: ViewGroup,
                                      viewType: Int) = SearchResultViewHolder(

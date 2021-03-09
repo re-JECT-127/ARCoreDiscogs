@@ -1,5 +1,5 @@
 
-package com.example.arcorediscogs
+package com.example.arcorediscogs.database.entity
 
 import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE

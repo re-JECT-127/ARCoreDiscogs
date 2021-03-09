@@ -1,11 +1,15 @@
 
 
-package com.example.arcorediscogs
+package com.example.arcorediscogs.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.arcorediscogs.database.dao.ResultDao
+import com.example.arcorediscogs.database.dao.TracklistInfoDao
+import com.example.arcorediscogs.database.entity.Result
+import com.example.arcorediscogs.database.entity.TracklistInfo
 
 @Database(entities = [(Result::class), (TracklistInfo::class)],version =1)
 abstract class ResultDB: RoomDatabase() {

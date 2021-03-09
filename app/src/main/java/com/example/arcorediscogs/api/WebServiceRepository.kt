@@ -1,4 +1,6 @@
-package com.example.arcorediscogs
+package com.example.arcorediscogs.api
+
+import com.example.arcorediscogs.api.DiscogsApi
 
 class WebServiceRepository() {
 

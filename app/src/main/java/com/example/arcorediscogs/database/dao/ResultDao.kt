@@ -1,9 +1,11 @@
 
 
-package com.example.arcorediscogs
+package com.example.arcorediscogs.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.arcorediscogs.database.AlbumTrackInfo
+import com.example.arcorediscogs.database.entity.Result
 
 @Dao
 interface ResultDao {

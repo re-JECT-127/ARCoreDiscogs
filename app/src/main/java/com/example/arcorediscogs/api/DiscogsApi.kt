@@ -1,4 +1,4 @@
-package com.example.arcorediscogs
+package com.example.arcorediscogs.api
 
 import android.nfc.tech.NfcBarcode
 import com.google.gson.annotations.SerializedName
@@ -7,7 +7,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import retrofit2.http.Url
 
 object DiscogsApi {
     const val URL = "https://api.discogs.com/"
@@ -35,7 +34,7 @@ object DiscogsApi {
 
     interface Service2 {
         @GET("masters/{master_id}")
-        suspend fun release(@Path("master_id") master_id: Int): DiscogsApi.Tracklist.Result
+        suspend fun release(@Path("master_id") master_id: Int): Tracklist.Result
     }
 
     object Tracklist {
@@ -55,7 +54,7 @@ object DiscogsApi {
             @Query("type") master: String,
             @Query("barcode") barcode: NfcBarcode,
             @Query("token") token: String
-        ): DiscogsApi.Model.Result
+        ): Model.Result
 
     }
 
@@ -64,6 +63,8 @@ object DiscogsApi {
         .baseUrl(URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    val service = retrofit.create(Service::class.java)
-    val service2 = retrofit.create(Service2::class.java)
+    val service = retrofit.create(
+        Service::class.java)
+    val service2 = retrofit.create(
+        Service2::class.java)
 }

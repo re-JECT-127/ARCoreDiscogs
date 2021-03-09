@@ -1,8 +1,10 @@
 
-package com.example.arcorediscogs
+package com.example.arcorediscogs.database
 
 import androidx.room.Embedded
 import androidx.room.Relation
+import com.example.arcorediscogs.database.entity.Result
+import com.example.arcorediscogs.database.entity.TracklistInfo
 
 class AlbumTrackInfo{
     @Embedded

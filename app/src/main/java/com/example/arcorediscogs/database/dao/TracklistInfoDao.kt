@@ -1,7 +1,8 @@
 
-package com.example.arcorediscogs
+package com.example.arcorediscogs.database.dao
 
 import androidx.room.*
+import com.example.arcorediscogs.database.entity.TracklistInfo
 
 @Dao
 interface TracklistInfoDao {

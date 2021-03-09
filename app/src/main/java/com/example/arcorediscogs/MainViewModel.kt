@@ -5,10 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
+import com.example.arcorediscogs.api.WebServiceRepository
 import kotlinx.coroutines.Dispatchers
 
 class MainViewModel: ViewModel() {
-    private val repository: WebServiceRepository = WebServiceRepository()
+    private val repository: WebServiceRepository =
+        WebServiceRepository()
     private val query = MutableLiveData<String>()
     private val tracklisQuery = MutableLiveData<Int>()
      fun hitcountquery(name: String){
