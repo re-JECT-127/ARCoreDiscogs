@@ -34,6 +34,7 @@ class RecentSearches(var id: Long = 0) : Fragment() {
 
         return recentFragmentView
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -42,17 +43,28 @@ class RecentSearches(var id: Long = 0) : Fragment() {
         recentViewMod.getResults().observe(viewLifecycleOwner, {
             Log.d("FYI", "recent Adapter $it")
             rv_results.layoutManager = LinearLayoutManager(requireContext())
-            rv_results.adapter = RecentSearchAdapter(it)})
+            rv_results.adapter = RecentSearchAdapter(it)
+        })
 
 
         val rv_resultsrv = view?.findViewById<RecyclerView>(R.id.rv_resultsrv)
-        val trackListModel: TracklistInfoModel by viewModels{TrackListModelFactory(this.requireActivity().application, id)}
+        val trackListModel: TracklistInfoModel by viewModels {
+            TrackListModelFactory(
+                this.requireActivity().application,
+                id
+            )
+        }
         Log.d("FYI", "Test2 $id")
         val viewModrv = ViewModelProvider(this).get(trackListModel::class.java)
         viewModrv.getTracks().observe(viewLifecycleOwner, {
             Log.d("FYI", "Adapter $it")
-            rv_resultsrv.layoutManager = LinearLayoutManager(requireContext())
-            rv_resultsrv.adapter = RecentRvAdapter(it)})
+            if (rv_resultsrv != null) {
+                rv_resultsrv.layoutManager = LinearLayoutManager(requireContext())
+            }
+            if (rv_resultsrv != null) {
+                rv_resultsrv.adapter = RecentRvAdapter(it)
+            }
+        })
 
     }
 

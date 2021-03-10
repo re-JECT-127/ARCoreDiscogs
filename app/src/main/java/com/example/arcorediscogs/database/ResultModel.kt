@@ -9,22 +9,25 @@ import com.example.arcorediscogs.database.entity.Result
 import com.example.arcorediscogs.database.entity.TracklistInfo
 
 
-class ResultModel(application: Application): AndroidViewModel(application) {
-    private val results: LiveData<List<Result>> = ResultDB.get(getApplication()).resultDao().getAll()
-
-
+class ResultModel(application: Application) : AndroidViewModel(application) {
+    private val results: LiveData<List<Result>> =
+        ResultDB.get(getApplication()).resultDao().getAll()
 
     fun getResults() = results
 
-
 }
 
-class TracklistInfoModel(application: Application, id: Long): AndroidViewModel(application) {
-    private val tracks: LiveData<List<TracklistInfo>> = ResultDB.get(getApplication()).tracklistInfoDao().getAll(id)
+class TracklistInfoModel(application: Application, id: Long) : AndroidViewModel(application) {
+    private val tracks: LiveData<List<TracklistInfo>> =
+        ResultDB.get(getApplication()).tracklistInfoDao().getAll(id)
+
     fun getTracks() = tracks
 }
-class TrackListModelFactory(private val application: Application, private val id: Long): ViewModelProvider.NewInstanceFactory() {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T = TracklistInfoModel(application, id) as T
+
+class TrackListModelFactory(private val application: Application, private val id: Long) :
+    ViewModelProvider.NewInstanceFactory() {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+        TracklistInfoModel(application, id) as T
 
 
 }

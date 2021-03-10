@@ -29,7 +29,8 @@
                     tools:src="@tools:sample/avatars"
                     android:layout_width="359dp"
                     android:layout_height="160dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:contentDescription="@string/album_cover" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -42,7 +43,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
                         android:gravity="center"
-                        android:text="Album name"
+                        android:text="@string/album_name"
                         android:textAlignment="center"
                         android:textStyle="bold" />
 
@@ -50,19 +51,19 @@
                         android:id="@+id/rartist"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Artist" />
+                        android:text="@string/artist" />
 
                     <TextView
                         android:id="@+id/rgenre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="genre" />
+                        android:text="@string/genre" />
 
                     <TextView
                         android:id="@+id/rreleased"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Released" />
+                        android:text="@string/released" />
 
                 </LinearLayout>
 
@@ -72,7 +73,7 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tracklist"
+                android:text="@string/tracklist"
                 android:textColor="#000000"
                 android:textStyle="bold" />
 

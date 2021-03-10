@@ -12,17 +12,23 @@ import com.example.arcorediscogs.database.entity.TracklistInfo
 class RecentSearchViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView)
 
-class RecentSearchAdapter(private val items: List<Result>?) : RecyclerView.Adapter<RecentSearchViewHolder>() {
+class RecentSearchAdapter(private val items: List<Result>?) :
+    RecyclerView.Adapter<RecentSearchViewHolder>() {
     //     private var items: List<TracklistInfo>? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = RecentSearchViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.recent_searches_item,
-            parent, false))
+        LayoutInflater.from(parent.context).inflate(
+            R.layout.recent_searches_item,
+            parent, false
+        )
+    )
 
 
     override fun getItemCount() = items?.size ?: 0
 
-    override fun onBindViewHolder(holder: RecentSearchViewHolder,
-                                  position: Int) {
+    override fun onBindViewHolder(
+        holder: RecentSearchViewHolder,
+        position: Int
+    ) {
         Log.d("FYI", "Itemlist $items")
         val textView: TextView = holder.itemView.findViewById(R.id.ralbum)
         textView.text = items?.get(position)?.album
@@ -36,20 +42,27 @@ class RecentSearchAdapter(private val items: List<Result>?) : RecyclerView.Adapt
 
     }
 }
+
 class RecentRvViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView)
 
-class RecentRvAdapter(private val items: List<TracklistInfo>?) : RecyclerView.Adapter<RecentRvViewHolder>() {
+class RecentRvAdapter(private val items: List<TracklistInfo>?) :
+    RecyclerView.Adapter<RecentRvViewHolder>() {
     //     private var items: List<TracklistInfo>? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = RecentRvViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.recent_rv_item,
-            parent, false))
+        LayoutInflater.from(parent.context).inflate(
+            R.layout.recent_rv_item,
+            parent, false
+        )
+    )
 
 
     override fun getItemCount() = items?.size ?: 0
 
-    override fun onBindViewHolder(holder: RecentRvViewHolder,
-                                  position: Int) {
+    override fun onBindViewHolder(
+        holder: RecentRvViewHolder,
+        position: Int
+    ) {
         Log.d("FYI", "Itemlist $items")
         val textView: TextView = holder.itemView.findViewById(R.id.rposition)
         textView.text = items?.get(position)?.trackNumb
@@ -57,7 +70,6 @@ class RecentRvAdapter(private val items: List<TracklistInfo>?) : RecyclerView.Ad
         textView2.text = items?.get(position)?.album
         val textView3: TextView = holder.itemView.findViewById(R.id.rduration)
         textView3.text = items?.get(position)?.duration
-
 
 
     }

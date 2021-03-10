@@ -44,6 +44,7 @@ class mainFrag : Fragment() {
         return inflater.inflate(R.layout.mainfrag, container, false)
     }
 
+    //BARCODE SCANNING CODE RUNS HERE
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK) {
             val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
@@ -63,6 +64,7 @@ class mainFrag : Fragment() {
         }
     }
 
+    //BARCODE BUTTON
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var barButt = getView()?.findViewById<Button>(R.id.button3)

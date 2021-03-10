@@ -8,17 +8,18 @@ import androidx.lifecycle.switchMap
 import com.example.arcorediscogs.api.WebServiceRepository
 import kotlinx.coroutines.Dispatchers
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
     private val repository: WebServiceRepository =
         WebServiceRepository()
     private val query = MutableLiveData<String>()
     private val tracklisQuery = MutableLiveData<Int>()
-     fun hitcountquery(name: String){
+    fun hitcountquery(name: String) {
         Log.d("FYI", name)
         query.value = name
 
     }
-    fun masterRelease(id: Int){
+
+    fun masterRelease(id: Int) {
         tracklisQuery.value = id
     }
 
@@ -34,4 +35,4 @@ class MainViewModel: ViewModel() {
             emit(retrievedList)
         }
     }
-    }
+}

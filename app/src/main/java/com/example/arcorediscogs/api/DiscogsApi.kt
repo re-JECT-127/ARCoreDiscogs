@@ -22,6 +22,7 @@ object DiscogsApi {
         )
     }
 
+    //service for album info
     interface Service {
         @GET("database/search")
         suspend fun artist(
@@ -32,6 +33,7 @@ object DiscogsApi {
 
     }
 
+    //Service for tracklist
     interface Service2 {
         @GET("masters/{master_id}")
         suspend fun release(@Path("master_id") master_id: Int): Tracklist.Result
@@ -48,6 +50,7 @@ object DiscogsApi {
 
     }
 
+    //The Service for the Barcode scan
     interface Service3 {
         @GET("search")
         suspend fun artist(
@@ -58,13 +61,18 @@ object DiscogsApi {
 
     }
 
-
+    //creating service retrofits
     private val retrofit = Retrofit.Builder()
         .baseUrl(URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     val service = retrofit.create(
-        Service::class.java)
+        Service::class.java
+    )
     val service2 = retrofit.create(
-        Service2::class.java)
+        Service2::class.java
+    )
+    val service3 = retrofit.create(
+        Service3::class.java
+    )
 }
