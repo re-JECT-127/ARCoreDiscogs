@@ -67,19 +67,13 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
     }
-
     fun search() {
         Log.d("FYI", "toimiiko")
-
-
-
-
     }
-    fun returnFromImgFrag(id:Long){
-
-        supportFragmentManager.beginTransaction().apply{
+    //Phoning home safely from ImageTrackingFragment
+    fun returnFromImgFrag(id: Long) {
+        supportFragmentManager.beginTransaction().apply {
             remove(supportFragmentManager.findFragmentByTag("1")!!)
             replace(R.id.fragment2, CardFragment(id))
             Log.d("FYI", "Tried to load Fragment $id")
