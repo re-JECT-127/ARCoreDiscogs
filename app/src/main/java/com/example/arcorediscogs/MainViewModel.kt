@@ -38,7 +38,7 @@ class MainViewModel: ViewModel() {
             emit(retrievedList)
         }
     }
-    val barcodeSearch = query.switchMap {
+    val barcodeSearch = barcodeQuery.switchMap {
         liveData(Dispatchers.IO) {
             val retrievedList = repository.getBarcode(it)
             emit(retrievedList)

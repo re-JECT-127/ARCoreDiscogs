@@ -29,15 +29,19 @@ object DiscogsApi {
             @Query("title") title: String,
             @Query("token") token: String
         ): Model.Result
+
+
+
+    }
+    interface Service3 {
+        @GET("database/search")
         suspend fun barcode(
             @Query("type") master: String,
             @Query("barcode") barcode: String,
             @Query("token") token: String
         ): Model.Result
 
-
     }
-
 
     interface Service2 {
         @GET("masters/{master_id}")
@@ -66,4 +70,6 @@ object DiscogsApi {
         Service::class.java)
     val service2 = retrofit.create(
         Service2::class.java)
+    val service3 = retrofit.create(
+        Service3::class.java)
 }
