@@ -29,8 +29,15 @@ object DiscogsApi {
             @Query("title") title: String,
             @Query("token") token: String
         ): Model.Result
+        suspend fun barcode(
+            @Query("type") master: String,
+            @Query("barcode") barcode: NfcBarcode,
+            @Query("token") token: String
+        ): Model.Result
+
 
     }
+
 
     interface Service2 {
         @GET("masters/{master_id}")
@@ -48,15 +55,7 @@ object DiscogsApi {
 
     }
 
-    interface Service3 {
-        @GET("search")
-        suspend fun artist(
-            @Query("type") master: String,
-            @Query("barcode") barcode: NfcBarcode,
-            @Query("token") token: String
-        ): Model.Result
 
-    }
 
 
     private val retrofit = Retrofit.Builder()

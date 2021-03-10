@@ -13,9 +13,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.arcorediscogs.database.ResultDB
+import com.example.arcorediscogs.database.entity.Result
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -23,6 +29,8 @@ private const val ARG_PARAM2 = "param2"
 class mainFrag : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var viewModel: MainViewModel
+    private val db by lazy { ResultDB.get(requireContext()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +64,26 @@ class mainFrag : Fragment() {
                         "Scanned: " + result.contents,
                         Toast.LENGTH_LONG
                     ).show()
+                    viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+                    viewModel.barcodeSearch.observe(viewLifecycleOwner, Observer {
+
+
+                        viewModel.barcodeScan(result.contents)
+                        GlobalScope.launch {
+                            val id = db.resultDao().insert(
+                                Result(
+                                    it.results[0].toString().split("=")[1].split(")")[0].split(",")[0].toInt(),
+                                    it.results[0].title.split("-")[0],
+                                    it.results[0].title.split("-")[1],
+                                    it.results[0].genre[0],
+                                    it.results[0].year,
+                                    it.results[0].thumb
+                                )
+                            )
+                        }
+
+                        // viewModel.hitcountquery(name = it.artist.toString())
+                    })
                 }
             } else {
                 super.onActivityResult(requestCode, resultCode, data);

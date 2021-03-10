@@ -13,6 +13,7 @@ class MainViewModel: ViewModel() {
         WebServiceRepository()
     private val query = MutableLiveData<String>()
     private val tracklisQuery = MutableLiveData<Int>()
+    private val barcodeQuery = MutableLiveData<String>()
      fun hitcountquery(name: String){
         Log.d("FYI", name)
         query.value = name
@@ -20,6 +21,9 @@ class MainViewModel: ViewModel() {
     }
     fun masterRelease(id: Int){
         tracklisQuery.value = id
+    }
+    fun barcodeScan(barcode: String){
+        barcodeQuery.value = barcode
     }
 
     val totalHits = query.switchMap {
@@ -31,6 +35,12 @@ class MainViewModel: ViewModel() {
     val tracklist = tracklisQuery.switchMap {
         liveData(Dispatchers.IO) {
             val retrievedList = repository.getRelease(it)
+            emit(retrievedList)
+        }
+    }
+    val barcodeSearch = query.switchMap {
+        liveData(Dispatchers.IO) {
+            val retrievedList = repository.getBarcode(it)
             emit(retrievedList)
         }
     }
