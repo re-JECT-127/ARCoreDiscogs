@@ -10,15 +10,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.arcorediscogs.database.ResultDB
 import com.example.arcorediscogs.database.TrackListModelFactory
 import com.example.arcorediscogs.database.TracklistInfoModel
 import com.example.arcorediscogs.database.entity.Result
-import com.google.android.filament.Filament.init
 import kotlinx.android.synthetic.main.fragment_card.*
 
 
@@ -35,7 +32,7 @@ class CardFragment(var id: Long = 0) : Fragment() {
         fragmentView = inflater.inflate(R.layout.fragment_card, container, false)
         val db by lazy { ResultDB.get(fragmentView.context) }
         val albumresult: List<Result>?
-        val albumtext = view?.findViewById<TextView>(R.id.textView5)
+        val albumtext = view?.findViewById<TextView>(R.id.album)
         val artist = view?.findViewById<TextView>(R.id.textView6)
         val genre = view?.findViewById<TextView>(R.id.textView7)
         val released = view?.findViewById<TextView>(R.id.textView8)

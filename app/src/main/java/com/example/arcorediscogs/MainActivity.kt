@@ -51,6 +51,12 @@ class MainActivity : AppCompatActivity() {
         bottomAppBar.setNavigationOnClickListener {
             Log.d("mAct", "Nav clicked")
             // Handle navigation icon press
+            supportFragmentManager.beginTransaction().apply{
+                remove(supportFragmentManager.findFragmentByTag("1")!!)
+                replace(R.id.fragment2, RecentSearches())
+                Log.d("FYI", "Tried to load recent frag")
+                commit()
+            }
         }
         bottomAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -75,6 +81,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun returnFromImgFrag(id:Long){
+        RecentSearches(id)
         supportFragmentManager.beginTransaction().apply{
             remove(supportFragmentManager.findFragmentByTag("1")!!)
             replace(R.id.fragment2, CardFragment(id))
