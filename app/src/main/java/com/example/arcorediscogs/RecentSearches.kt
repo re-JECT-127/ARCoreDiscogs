@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.arcorediscogs.database.ResultDB
 import com.example.arcorediscogs.database.ResultModel
 import com.example.arcorediscogs.database.TrackListModelFactory
@@ -44,7 +45,7 @@ class RecentSearches(var id: Long = 0) : Fragment() {
             rv_results.adapter = RecentSearchAdapter(it)})
 
 
-
+        val rv_resultsrv = view?.findViewById<RecyclerView>(R.id.rv_resultsrv)
         val trackListModel: TracklistInfoModel by viewModels{TrackListModelFactory(this.requireActivity().application, id)}
         Log.d("FYI", "Test2 $id")
         val viewModrv = ViewModelProvider(this).get(trackListModel::class.java)
