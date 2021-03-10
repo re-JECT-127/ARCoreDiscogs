@@ -62,7 +62,6 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             null
         }
         arFrag.arSceneView.scene.addOnUpdateListener { frameUpdate() }
-        val btn = getView()?.findViewById<Button>(R.id.button2)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.totalHits.observe(viewLifecycleOwner, Observer {
             Log.d("FYI", it.results.toString())

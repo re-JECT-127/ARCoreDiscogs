@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.add
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -81,3 +82,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
