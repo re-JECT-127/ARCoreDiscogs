@@ -31,7 +31,7 @@ object DiscogsApi {
         ): Model.Result
         suspend fun barcode(
             @Query("type") master: String,
-            @Query("barcode") barcode: NfcBarcode,
+            @Query("barcode") barcode: String,
             @Query("token") token: String
         ): Model.Result
 
