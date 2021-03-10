@@ -17,6 +17,7 @@ import com.example.arcorediscogs.database.TrackListModelFactory
 import com.example.arcorediscogs.database.TracklistInfoModel
 import com.example.arcorediscogs.database.entity.Result
 import kotlinx.android.synthetic.main.fragment_card.*
+import kotlinx.android.synthetic.main.recent_searches_item.*
 
 
 class CardFragment(var id: Long = 0) : Fragment() {
@@ -51,8 +52,8 @@ class CardFragment(var id: Long = 0) : Fragment() {
          val viewMod = ViewModelProvider(this).get(trackListModel::class.java)
         viewMod.getTracks().observe(viewLifecycleOwner, {
             Log.d("FYI", "Adapter $it")
-            rv_results.layoutManager = LinearLayoutManager(requireContext())
-            rv_results.adapter = SearchResultAdapter(it)})
+            rv_resultsrv.layoutManager = LinearLayoutManager(requireContext())
+            rv_resultsrv.adapter = SearchResultAdapter(it)})
             /*val rv_results = view?.findViewById<RecyclerView>(R.id.rv_results)
         rv_results?.layoutManager = LinearLayoutManager(requireContext())
         rv_results?.adapter = SearchResultAdapter()*/

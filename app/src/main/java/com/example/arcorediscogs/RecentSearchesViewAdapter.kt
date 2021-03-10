@@ -36,4 +36,30 @@ class RecentSearchAdapter(private val items: List<Result>?) : RecyclerView.Adapt
 
     }
 }
+class RecentRvViewHolder(itemView: View) :
+    RecyclerView.ViewHolder(itemView)
+
+class RecentRvAdapter(private val items: List<TracklistInfo>?) : RecyclerView.Adapter<RecentRvViewHolder>() {
+    //     private var items: List<TracklistInfo>? = null
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = RecentRvViewHolder(
+        LayoutInflater.from(parent.context).inflate(R.layout.recent_rv_item,
+            parent, false))
+
+
+    override fun getItemCount() = items?.size ?: 0
+
+    override fun onBindViewHolder(holder: RecentRvViewHolder,
+                                  position: Int) {
+        Log.d("FYI", "Itemlist $items")
+        val textView: TextView = holder.itemView.findViewById(R.id.rposition)
+        textView.text = items?.get(position)?.trackNumb
+        val textView2: TextView = holder.itemView.findViewById(R.id.rname)
+        textView2.text = items?.get(position)?.album
+        val textView3: TextView = holder.itemView.findViewById(R.id.rduration)
+        textView3.text = items?.get(position)?.duration
+
+
+
+    }
+}
 
