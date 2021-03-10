@@ -47,11 +47,11 @@ class RecentSearches(var id: Long = 0) : Fragment() {
 
         val trackListModel: TracklistInfoModel by viewModels{TrackListModelFactory(this.requireActivity().application, id)}
         Log.d("FYI", "Test2 $id")
-        val viewMod = ViewModelProvider(this).get(trackListModel::class.java)
-        viewMod.getTracks().observe(viewLifecycleOwner, {
+        val viewModrv = ViewModelProvider(this).get(trackListModel::class.java)
+        viewModrv.getTracks().observe(viewLifecycleOwner, {
             Log.d("FYI", "Adapter $it")
             rv_resultsrv.layoutManager = LinearLayoutManager(requireContext())
-            rv_resultsrv.adapter = SearchResultAdapter(it)})
+            rv_resultsrv.adapter = RecentRvAdapter(it)})
 
     }
 
