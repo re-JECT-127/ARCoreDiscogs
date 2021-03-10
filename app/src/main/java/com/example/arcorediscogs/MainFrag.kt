@@ -60,15 +60,10 @@ class mainFrag : Fragment() {
                 if (result.contents == null) {
                     Toast.makeText(requireContext(), "Cancelled", Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Scanned: " + result.contents,
-                        Toast.LENGTH_LONG
-                    ).show()
                     viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-                    viewModel.barcodeSearch.observe(viewLifecycleOwner, Observer {
+                    viewModel.barcodeSearch.observe(this, Observer {
 
-
+                        Log.d("FYI", "toimiiko ${result.contents}")
                         viewModel.barcodeScan(result.contents)
                         GlobalScope.launch {
                             val id = db.resultDao().insert(
@@ -85,6 +80,13 @@ class mainFrag : Fragment() {
 
                         // viewModel.hitcountquery(name = it.artist.toString())
                     })
+                    Log.d("FYI", "toimiiko1 ${result.contents}")
+                    Toast.makeText(
+                        requireContext(),
+                        "Scanned: " + result.contents,
+                        Toast.LENGTH_LONG
+                    ).show()
+
                 }
             } else {
                 super.onActivityResult(requestCode, resultCode, data);

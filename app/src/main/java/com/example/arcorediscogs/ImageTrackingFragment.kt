@@ -62,6 +62,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             null
         }
         arFrag.arSceneView.scene.addOnUpdateListener { frameUpdate() }
+
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.totalHits.observe(viewLifecycleOwner, Observer {
             Log.d("FYI", it.results.toString())
