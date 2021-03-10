@@ -18,4 +18,10 @@
     <string name="scan_button">Scan Button</string>
     <string name="barcode_scanner">BARCODE SCANNER</string>
     <string name="Card_butt">CARD OPEN</string>
+    <string name="album_cover">Album Cover</string>
+    <string name="album_name">Album name</string>
+    <string name="artist">Artist</string>
+    <string name="genre">genre</string>
+    <string name="released">Released</string>
+    <string name="tracklist">Tracklist</string>
 </resources>

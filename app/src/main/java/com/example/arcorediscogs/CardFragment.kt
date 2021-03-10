@@ -1,4 +1,3 @@
-
 package com.example.arcorediscogs
 
 import android.os.Bundle
@@ -47,17 +46,23 @@ class CardFragment(var id: Long = 0) : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-         val trackListModel: TracklistInfoModel by viewModels{TrackListModelFactory(this.requireActivity().application, id)}
+        val trackListModel: TracklistInfoModel by viewModels {
+            TrackListModelFactory(
+                this.requireActivity().application,
+                id
+            )
+        }
         Log.d("FYI", "Test2 $id")
-         val viewMod = ViewModelProvider(this).get(trackListModel::class.java)
+        val viewMod = ViewModelProvider(this).get(trackListModel::class.java)
         viewMod.getTracks().observe(viewLifecycleOwner, {
             Log.d("FYI", "Adapter $it")
             rv_resultsrv.layoutManager = LinearLayoutManager(requireContext())
-            rv_resultsrv.adapter = SearchResultAdapter(it)})
-            /*val rv_results = view?.findViewById<RecyclerView>(R.id.rv_results)
-        rv_results?.layoutManager = LinearLayoutManager(requireContext())
-        rv_results?.adapter = SearchResultAdapter()*/
-        }
+            rv_resultsrv.adapter = SearchResultAdapter(it)
+        })
+        /*val rv_results = view?.findViewById<RecyclerView>(R.id.rv_results)
+    rv_results?.layoutManager = LinearLayoutManager(requireContext())
+    rv_results?.adapter = SearchResultAdapter()*/
     }
+}
 
 

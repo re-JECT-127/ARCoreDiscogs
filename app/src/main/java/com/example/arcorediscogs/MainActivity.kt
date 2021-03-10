@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val spinner : ProgressBar
+        //Defining the loarding spinner
+        val spinner: ProgressBar
         spinner = findViewById(R.id.progressBar1)
 
         supportFragmentManager.beginTransaction().apply {
@@ -37,12 +37,14 @@ class MainActivity : AppCompatActivity() {
             Log.d("FYI", viewModel.totalHits.toString())
             // viewModel.hitcountquery(name = it.artist.toString())
         })
+        //FAB Functionality
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
+            //Making the spinner run while the ImageTrackingFragment loads
             spinner.visibility = View.VISIBLE
             Log.d("mAct", "Fab clicked")
             supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment2, ImageTrackingFragment(),"1")
+                replace(R.id.fragment2, ImageTrackingFragment(), "1")
                 commit()
             }
         }

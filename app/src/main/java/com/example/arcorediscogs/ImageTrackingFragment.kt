@@ -34,12 +34,13 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
     private val db by lazy { ResultDB.get(requireContext()) }
     lateinit var viewModel: MainViewModel
 
+    //onCreateView Runs so we can clean all remains of leftover fragment views
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        container?.removeAllViews()
+        container?.removeAllViews() //this part
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -68,7 +69,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             Log.d("FYI", viewModel.totalHits.toString())
             master = it.results[0].toString().split("=")[1].split(")")[0].split(",")[0]
             Log.d("FYI", master)
-
+            //this is where we put all the data into the DB
             viewModel.masterRelease(id = master.toInt())
             GlobalScope.launch {
                 val id = db.resultDao().insert(
@@ -85,7 +86,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
 
             // viewModel.hitcountquery(name = it.artist.toString())
         })
-
+        //this is where we get the tracklist info
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.tracklist.observe(viewLifecycleOwner, Observer {
             Log.d("FYI", it.toString())
@@ -94,8 +95,8 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
             var b = 0
             Log.d("FYI", "$a")
             GlobalScope.launch {
-            for (i in it.tracklist) {
-
+                for (i in it.tracklist) {
+                    //FOR loop to get every track out of the tracklist
                     val master_id = db.tracklistInfoDao().insert(
                         TracklistInfo(
                             master.toInt(),
@@ -108,11 +109,11 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                     )
                     b++
                 }
-                Log.d("FYI", "adding to db done" )
-               /* val activity = view.context as AppCompatActivity
-                activity.supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment2, CardFragment(master.toLong())).addToBackStack(null)
-                    .commit()*/
+                Log.d("FYI", "adding to db done")
+                /* val activity = view.context as AppCompatActivity
+                 activity.supportFragmentManager.beginTransaction()
+                     .replace(R.id.fragment2, CardFragment(master.toLong())).addToBackStack(null)
+                     .commit()*/
             }
             Log.d("FYI", viewModel.tracklist.toString())
 
@@ -133,7 +134,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
         }
     }*/
 
-
+    //ARCore code
     private fun frameUpdate() {
         val fitToScanImg = getView()?.findViewById<ImageView>(R.id.fitToScanImg)
         Log.d("OVC", "frameUpdate")
@@ -167,7 +168,7 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                         Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
                     }
                     TrackingState.TRACKING -> {
-                        Log.d("OVC", "halooooooooooooooooooo")
+                        Log.d("OVC", "Tracking OK")
                         val anchors = it.anchors
                         if (anchors.isEmpty()) {
                             if (fitToScanImg != null) {
@@ -189,14 +190,14 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
 
 
                             viewModel.hitcountquery("${it.name}")
-                            Log.d("OVC", "toimiigö ${it.name}")
+                            Log.d("OVC", "Works > ${it.name}")
                             imgNode.renderable = viewRenderable
 
                         }
 
                     }
                     else -> {
-                        Log.d("OVC", "toimiiko")
+                        Log.d("OVC", "works?")
                     }
                 }
             }

@@ -35,6 +35,7 @@ class TrackingFragment : ArFragment() {
         config: Config, session:
         Session?
     ) {
+        //Our current image database for the records we are supporting, this is the part of the code that needs the most work to get a well functioning app.
         val augmentedImageDb = AugmentedImageDatabase(session)
         val assetManager = context!!.assets
         listOf(
