@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.arcorediscogs.database.ResultDB
+import com.example.arcorediscogs.database.ResultModel
 import com.example.arcorediscogs.database.TrackListModelFactory
 import com.example.arcorediscogs.database.TracklistInfoModel
 import com.example.arcorediscogs.database.entity.Result
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_card.*
 
 
 class CardFragment(var id: Long = 0) : Fragment() {
-
+    private val db by lazy { ResultDB.get(fragmentView.context) }
     private lateinit var fragmentView: View
 
     override fun onCreateView(
@@ -29,16 +30,11 @@ class CardFragment(var id: Long = 0) : Fragment() {
         container?.removeAllViews()
         Log.d("FYI", "Test")
         fragmentView = inflater.inflate(R.layout.fragment_card, container, false)
-        val db by lazy { ResultDB.get(fragmentView.context) }
-        val albumresult: List<Result>?
-        val albumtext = view?.findViewById<TextView>(R.id.album)
-        val artist = view?.findViewById<TextView>(R.id.textView6)
-        val genre = view?.findViewById<TextView>(R.id.textView7)
-        val released = view?.findViewById<TextView>(R.id.textView8)
-        albumtext?.text = db.resultDao().getAll().value?.get(id.toInt())?.album
-        artist?.text = db.resultDao().getAll().value?.get(id.toInt())?.artist
-        genre?.text = db.resultDao().getAll().value?.get(id.toInt())?.genre
-        released?.text = db.resultDao().getAll().value?.get(id.toInt())?.released
+
+//      val albumresult: List<Result>?
+
+
+
 
         return fragmentView
     }
@@ -55,6 +51,22 @@ class CardFragment(var id: Long = 0) : Fragment() {
         /*val rv_results = view?.findViewById<RecyclerView>(R.id.rv_results)
     rv_results?.layoutManager = LinearLayoutManager(requireContext())
     rv_results?.adapter = SearchResultAdapter()*/
+
+        val resultModel: ResultModel by viewModels{}
+
+        val albumtext = view?.findViewById<TextView>(R.id.album)
+        val artist = view?.findViewById<TextView>(R.id.textView6)
+        val genre = view?.findViewById<TextView>(R.id.textView7)
+        val released = view?.findViewById<TextView>(R.id.textView8)
+
+        albumtext?.text = db.resultDao().getAll().value?.get(id.toInt())?.album
+        Log.d("FYI", "albumtext $albumtext")
+        artist?.text = db.resultDao().getAll().value?.get(id.toInt())?.artist
+        Log.d("FYI", "artist $artist")
+        genre?.text = db.resultDao().getAll().value?.get(id.toInt())?.genre
+        Log.d("FYI", "genre $genre")
+        released?.text = db.resultDao().getAll().value?.get(id.toInt())?.released
+        Log.d("FYI", "released $released")
     }
 }
 

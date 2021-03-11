@@ -2,6 +2,7 @@ package com.example.arcorediscogs
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils.replace
 import android.util.Log
@@ -42,6 +43,14 @@ class mainFrag : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        var gitButt = getView()?.findViewById<Button>(R.id.button2)
+        gitButt?.setOnClickListener {
+            val i = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://github.com/re-JECT-127/ARCoreDiscogs")
+            )
+            startActivity(i)
+        }
 
     }
 
@@ -56,6 +65,15 @@ class mainFrag : Fragment() {
         return inflater.inflate(R.layout.mainfrag, container, false)
     }
 
+    //BARCODE BUTTON
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var barButt = getView()?.findViewById<Button>(R.id.button3)
+        barButt?.setOnClickListener {
+            IntentIntegrator.forSupportFragment(this).initiateScan()
+        }
+    }
+
     //BARCODE SCANNING CODE RUNS HERE
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
@@ -65,6 +83,7 @@ class mainFrag : Fragment() {
 
             GlobalScope.launch {
                 repository.getBarcode(result.contents)
+                Log.d("FYI","${result.contents}")
             }
             Log.d("FYI", "toimiiko1 täääääää ${result.contents}")
 
@@ -72,9 +91,7 @@ class mainFrag : Fragment() {
                 if (result.contents == null) {
                     Toast.makeText(requireContext(), "Cancelled", Toast.LENGTH_LONG).show()
                 } else {
-
-
-                        // viewModel.hitcountquery(name = it.artist.toString())
+                    // viewModel.hitcountquery(name = it.artist.toString())
 
                     Toast.makeText(
                         requireContext(),
@@ -91,16 +108,5 @@ class mainFrag : Fragment() {
 
     }
 
-    //BARCODE BUTTON
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        var barButt = getView()?.findViewById<Button>(R.id.button3)
-        barButt?.setOnClickListener {
-            IntentIntegrator.forSupportFragment(this).initiateScan()
-        }
 
-
-
-
-    }
-   }
+}

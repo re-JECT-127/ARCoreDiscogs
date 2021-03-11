@@ -24,4 +24,8 @@
     <string name="genre">genre</string>
     <string name="released">Released</string>
     <string name="tracklist">Tracklist</string>
+    <string name="intro">"Welcome to the discogs ARCore scanner thingamajiggy, this application is EXTREMELY Work in Progress so keep that in mind while using, If you'd like to contribute to the project and help make it less sucky head on over to our github page."</string>
+    <string name="logo">DiscogsLogo</string>
+    <string name="github_page">GitHub page</string>
+    <string name="fabclicker">Press the FAB below to open up the ARCore Image scanning fragment.</string>
 </resources>

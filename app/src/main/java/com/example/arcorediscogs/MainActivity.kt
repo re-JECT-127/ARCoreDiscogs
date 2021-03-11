@@ -4,26 +4,24 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.add
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
     lateinit var title: String
+    lateinit var spinner: ProgressBar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //Defining the loarding spinner
-        val spinner: ProgressBar
+
         spinner = findViewById(R.id.progressBar1)
 
         supportFragmentManager.beginTransaction().apply {
@@ -45,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             spinner.visibility = View.VISIBLE
             Log.d("mAct", "Fab clicked")
             supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment2, ImageTrackingFragment(), "1")
+                replace(R.id.fragment2, ImageTrackingFragment(), "1").addToBackStack("bkstk")
                 commit()
             }
         }
@@ -79,6 +77,14 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.fragment2, CardFragment(id))
             Log.d("FYI", "Tried to load Fragment $id")
             commit()
+        }
+    }
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStack()
+            spinner.visibility = View.GONE
+        } else {
+            super.onBackPressed()
         }
     }
 }
