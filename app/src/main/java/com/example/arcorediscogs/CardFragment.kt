@@ -36,8 +36,9 @@ class CardFragment(var id: Long = 0) : Fragment() {
         val released = view?.findViewById<TextView>(R.id.textView8)
         val db by lazy { ResultDB.get(fragmentView.context) }
 
-       val albumname =   db.resultDao().getAll(id)
-         albumtext?.text = albumname.value?.get(0)?.album
+
+
+         albumtext?.text = db.resultDao().getAlbum(id.toInt()).toString()
         val viewModel = ViewModelProvider(this).get(ResultModel::class.java)
         viewModel.getResults().observe(viewLifecycleOwner) {
             Log.d("FYI", "Adapter $it")
