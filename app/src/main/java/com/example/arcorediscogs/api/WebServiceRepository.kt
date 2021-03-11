@@ -1,8 +1,6 @@
 package com.example.arcorediscogs.api
 
-import com.example.arcorediscogs.api.DiscogsApi
-
-class WebServiceRepository() {
+class WebServiceRepository {
 
     private val call = DiscogsApi.service
     private val call2 = DiscogsApi.service2
@@ -10,7 +8,7 @@ class WebServiceRepository() {
 
 
     suspend fun getUser(totalHits: String) =
-        call.artist("master", "$totalHits", "VfMCuKxEDTPpcrbKIpfmjhjEaGFntFhMXligFOol")
+        call.artist("master", totalHits, "VfMCuKxEDTPpcrbKIpfmjhjEaGFntFhMXligFOol")
     suspend fun getRelease(id: Int) =
         call2.release(id)
     suspend fun getBarcode(totalHits: String) =

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.arcorediscogs.database.ResultDB
+import com.example.arcorediscogs.database.ResultModel
 import com.example.arcorediscogs.database.TrackListModelFactory
 import com.example.arcorediscogs.database.TracklistInfoModel
 import com.example.arcorediscogs.database.entity.Result
@@ -29,17 +30,20 @@ class CardFragment(var id: Long = 0) : Fragment() {
         container?.removeAllViews()
         Log.d("FYI", "Test")
         fragmentView = inflater.inflate(R.layout.fragment_card, container, false)
-        val db by lazy { ResultDB.get(fragmentView.context) }
-        val albumresult: List<Result>?
         val albumtext = view?.findViewById<TextView>(R.id.album)
         val artist = view?.findViewById<TextView>(R.id.textView6)
         val genre = view?.findViewById<TextView>(R.id.textView7)
         val released = view?.findViewById<TextView>(R.id.textView8)
-        albumtext?.text = db.resultDao().getAll().value?.get(id.toInt())?.album
-        artist?.text = db.resultDao().getAll().value?.get(id.toInt())?.artist
-        genre?.text = db.resultDao().getAll().value?.get(id.toInt())?.genre
-        released?.text = db.resultDao().getAll().value?.get(id.toInt())?.released
 
+
+        val viewModel = ViewModelProvider(this).get(ResultModel::class.java)
+        viewModel.getResults().observe(viewLifecycleOwner) {
+            Log.d("FYI", "Adapter $it")
+            albumtext?.text = it.get(id.toInt()).album
+            artist?.text = it.get(id.toInt()).artist
+            genre?.text = it.get(id.toInt()).genre
+            released?.text = it.get(id.toInt()).released
+        }
         return fragmentView
     }
 

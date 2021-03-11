@@ -1,6 +1,5 @@
 package com.example.arcorediscogs.api
 
-import android.nfc.tech.NfcBarcode
 import com.google.gson.annotations.SerializedName
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -9,7 +8,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 object DiscogsApi {
-    const val URL = "https://api.discogs.com/"
+    private const val URL = "https://api.discogs.com/"
 
     object Model {
         data class Result(@SerializedName("results") val results: List<Results>)
