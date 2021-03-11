@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_card.*
 
 
 class CardFragment(var id: Long = 0) : Fragment() {
-    private val db by lazy { ResultDB.get(fragmentView.context) }
+
     private lateinit var fragmentView: View
 
     override fun onCreateView(
@@ -30,12 +30,20 @@ class CardFragment(var id: Long = 0) : Fragment() {
         container?.removeAllViews()
         Log.d("FYI", "Test")
         fragmentView = inflater.inflate(R.layout.fragment_card, container, false)
+        val albumtext = view?.findViewById<TextView>(R.id.album)
+        val artist = view?.findViewById<TextView>(R.id.textView6)
+        val genre = view?.findViewById<TextView>(R.id.textView7)
+        val released = view?.findViewById<TextView>(R.id.textView8)
 
-//      val albumresult: List<Result>?
 
-
-
-
+        val viewModel = ViewModelProvider(this).get(ResultModel::class.java)
+        viewModel.getResults().observe(viewLifecycleOwner) {
+            Log.d("FYI", "Adapter $it")
+            albumtext?.text = it.get(id.toInt()).album
+            artist?.text = it.get(id.toInt()).artist
+            genre?.text = it.get(id.toInt()).genre
+            released?.text = it.get(id.toInt()).released
+        }
         return fragmentView
     }
 
@@ -51,22 +59,6 @@ class CardFragment(var id: Long = 0) : Fragment() {
         /*val rv_results = view?.findViewById<RecyclerView>(R.id.rv_results)
     rv_results?.layoutManager = LinearLayoutManager(requireContext())
     rv_results?.adapter = SearchResultAdapter()*/
-
-        val resultModel: ResultModel by viewModels{}
-
-        val albumtext = view?.findViewById<TextView>(R.id.album)
-        val artist = view?.findViewById<TextView>(R.id.textView6)
-        val genre = view?.findViewById<TextView>(R.id.textView7)
-        val released = view?.findViewById<TextView>(R.id.textView8)
-
-        albumtext?.text = db.resultDao().getAll().value?.get(id.toInt())?.album
-        Log.d("FYI", "albumtext $albumtext")
-        artist?.text = db.resultDao().getAll().value?.get(id.toInt())?.artist
-        Log.d("FYI", "artist $artist")
-        genre?.text = db.resultDao().getAll().value?.get(id.toInt())?.genre
-        Log.d("FYI", "genre $genre")
-        released?.text = db.resultDao().getAll().value?.get(id.toInt())?.released
-        Log.d("FYI", "released $released")
     }
 }
 

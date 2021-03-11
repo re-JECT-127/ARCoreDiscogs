@@ -4,24 +4,15 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.arcorediscogs.api.WebServiceRepository
-import com.example.arcorediscogs.database.ResultDB
-import com.example.arcorediscogs.database.entity.Result
-import com.google.ar.sceneform.ux.ArFragment
 import com.google.zxing.integration.android.IntentIntegrator
-import com.google.zxing.integration.android.IntentResult
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -31,8 +22,7 @@ private const val ARG_PARAM2 = "param2"
 class mainFrag : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
-    lateinit var viewModel: MainViewModel
-    private val db by lazy { ResultDB.get(requireContext()) }
+
 
     private val repository: WebServiceRepository =
         WebServiceRepository()
