@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.arcorediscogs.api.WebServiceRepository
 import com.example.arcorediscogs.database.ResultDB
 import com.example.arcorediscogs.database.entity.Result
 import com.google.ar.sceneform.ux.ArFragment
@@ -31,6 +32,9 @@ class mainFrag : Fragment() {
     private var param2: String? = null
     lateinit var viewModel: MainViewModel
     private val db by lazy { ResultDB.get(requireContext()) }
+
+    private val repository: WebServiceRepository =
+        WebServiceRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,33 +58,24 @@ class mainFrag : Fragment() {
 
     //BARCODE SCANNING CODE RUNS HERE
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+
         if (resultCode == Activity.RESULT_OK) {
             val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+
+            GlobalScope.launch {
+                repository.getBarcode(result.contents)
+            }
+            Log.d("FYI", "toimiiko1 täääääää ${result.contents}")
+
             if (result != null) {
                 if (result.contents == null) {
                     Toast.makeText(requireContext(), "Cancelled", Toast.LENGTH_LONG).show()
                 } else {
-                    viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-                    viewModel.barcodeSearch.observe(this, Observer {
 
-                        Log.d("FYI", "toimiiko ${result.contents}")
-                        viewModel.barcodeScan(result.contents)
-                        GlobalScope.launch {
-                            val id = db.resultDao().insert(
-                                Result(
-                                    it.results[0].toString().split("=")[1].split(")")[0].split(",")[0].toInt(),
-                                    it.results[0].title.split("-")[0],
-                                    it.results[0].title.split("-")[1],
-                                    it.results[0].genre[0],
-                                    it.results[0].year,
-                                    it.results[0].thumb
-                                )
-                            )
-                        }
 
                         // viewModel.hitcountquery(name = it.artist.toString())
-                    })
-                    Log.d("FYI", "toimiiko1 ${result.contents}")
+
                     Toast.makeText(
                         requireContext(),
                         "Scanned: " + result.contents,
@@ -92,6 +87,8 @@ class mainFrag : Fragment() {
                 super.onActivityResult(requestCode, resultCode, data);
             }
         }
+
+
     }
 
     //BARCODE BUTTON
@@ -102,6 +99,8 @@ class mainFrag : Fragment() {
             IntentIntegrator.forSupportFragment(this).initiateScan()
         }
 
-    }
 
-}
+
+
+    }
+   }
