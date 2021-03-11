@@ -36,8 +36,7 @@ object DiscogsApi {
     interface Service3 {
         @GET("database/search")
         suspend fun barcode(
-            @Query("type") master: String,
-            @Query("barcode") barcode: String,
+            @Query("q") query: String,
             @Query("token") token: String
         ): Model.Result
 

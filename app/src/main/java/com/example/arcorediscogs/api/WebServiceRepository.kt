@@ -14,5 +14,5 @@ class WebServiceRepository() {
     suspend fun getRelease(id: Int) =
         call2.release(id)
     suspend fun getBarcode(totalHits: String) =
-        call3.barcode("master", "$totalHits", "VfMCuKxEDTPpcrbKIpfmjhjEaGFntFhMXligFOol")
+        call3.barcode(totalHits, "VfMCuKxEDTPpcrbKIpfmjhjEaGFntFhMXligFOol")
 }
