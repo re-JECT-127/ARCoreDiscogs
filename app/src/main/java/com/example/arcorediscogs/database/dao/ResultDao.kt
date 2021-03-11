@@ -9,8 +9,6 @@ import com.example.arcorediscogs.database.entity.Result
 interface ResultDao {
     @Query("SELECT * FROM result")
     fun getAll(): LiveData<List<Result>>
-    @Query("SELECT album FROM result WHERE result.id = id")
-    fun getAlbum(id: Int): List<Result>
 
     @Query("SELECT * FROM result WHERE result.id = :resultid")
     fun getAlbumTrackInfo(resultid: Int): AlbumTrackInfo

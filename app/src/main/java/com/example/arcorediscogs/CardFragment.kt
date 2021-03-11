@@ -38,7 +38,7 @@ class CardFragment(var id: Long = 0) : Fragment() {
 
 
 
-         albumtext?.text = db.resultDao().getAlbum(id.toInt()).toString()
+
 
         return fragmentView
     }
