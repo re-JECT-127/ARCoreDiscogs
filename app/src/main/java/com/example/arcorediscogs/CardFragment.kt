@@ -39,10 +39,10 @@ class CardFragment(var id: Long = 0) : Fragment() {
         val viewModel = ViewModelProvider(this).get(ResultModel::class.java)
         viewModel.getResults().observe(viewLifecycleOwner) {
             Log.d("FYI", "Adapter $it")
-            albumtext?.text = it.get(id.toInt()).album
-            artist?.text = it.get(id.toInt()).artist
-            genre?.text = it.get(id.toInt()).genre
-            released?.text = it.get(id.toInt()).released
+            albumtext?.text = it.get(0).album
+            artist?.text = it.get(0).artist
+            genre?.text = it.get(0).genre
+            released?.text = it.get(0).released
         }
         return fragmentView
     }
