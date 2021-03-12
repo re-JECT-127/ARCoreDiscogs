@@ -9,8 +9,10 @@ class WebServiceRepository {
 
     suspend fun getUser(totalHits: String) =
         call.artist("master", totalHits, "VfMCuKxEDTPpcrbKIpfmjhjEaGFntFhMXligFOol")
+
     suspend fun getRelease(id: Int) =
         call2.release(id)
+
     suspend fun getBarcode(totalHits: String) =
         call3.barcode(totalHits, "VfMCuKxEDTPpcrbKIpfmjhjEaGFntFhMXligFOol")
 }

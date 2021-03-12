@@ -30,8 +30,8 @@ object DiscogsApi {
         ): Model.Result
 
 
-
     }
+
     interface Service3 {
         @GET("database/search")
         suspend fun barcode(
@@ -58,16 +58,17 @@ object DiscogsApi {
     }
 
 
-
-
     private val retrofit = Retrofit.Builder()
         .baseUrl(URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     val service = retrofit.create(
-        Service::class.java)
+        Service::class.java
+    )
     val service2 = retrofit.create(
-        Service2::class.java)
+        Service2::class.java
+    )
     val service3 = retrofit.create(
-        Service3::class.java)
+        Service3::class.java
+    )
 }

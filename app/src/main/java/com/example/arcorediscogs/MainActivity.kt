@@ -66,9 +66,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     fun search() {
         Log.d("FYI", "toimiiko")
     }
+
     //Phoning home safely from ImageTrackingFragment
     fun returnFromImgFrag(id: Long) {
         supportFragmentManager.beginTransaction().apply {
@@ -78,6 +80,7 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
     }
+
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 1) {
             supportFragmentManager.popBackStack()
