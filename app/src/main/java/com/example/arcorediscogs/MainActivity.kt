@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //Defining the loarding spinner
+        //Defining the loading spinner
 
         spinner = findViewById(R.id.progressBar1)
 
@@ -85,6 +85,7 @@ class MainActivity : AppCompatActivity() {
             spinner.visibility = View.GONE
         } else {
             super.onBackPressed()
+            spinner.visibility = View.GONE
         }
     }
 }

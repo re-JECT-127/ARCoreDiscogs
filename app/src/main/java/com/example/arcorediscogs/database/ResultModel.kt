@@ -9,11 +9,19 @@ import com.example.arcorediscogs.database.entity.Result
 import com.example.arcorediscogs.database.entity.TracklistInfo
 
 
-class ResultModel(application: Application) : AndroidViewModel(application) {
+class ResultModel(application: Application, id: Long) : AndroidViewModel(application) {
     private val results: LiveData<List<Result>> =
-        ResultDB.get(getApplication()).resultDao().getAll()
+        ResultDB.get(getApplication()).resultDao().getAll(id)
 
     fun getResults() = results
+
+}
+
+class ResultModelFactory(private val application: Application, private val id: Long) :
+    ViewModelProvider.NewInstanceFactory() {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+        ResultModel(application, id) as T
+
 
 }
 

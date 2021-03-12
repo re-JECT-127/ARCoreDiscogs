@@ -19,7 +19,8 @@
         android:minWidth="12dp"
         android:minHeight="12dp"
         android:scaleX="0.2"
-        android:scaleY="0.2" />
+        android:scaleY="0.2"
+        android:translationZ="0dp"/>
 
     <!-- Note: A RecyclerView can also be used -->
 

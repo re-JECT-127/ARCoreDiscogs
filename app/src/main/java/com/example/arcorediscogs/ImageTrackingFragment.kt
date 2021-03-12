@@ -5,16 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.arcorediscogs.database.entity.Result
 import com.example.arcorediscogs.database.ResultDB
+import com.example.arcorediscogs.database.entity.Result
 import com.example.arcorediscogs.database.entity.TracklistInfo
 import com.google.ar.core.AugmentedImage
 import com.google.ar.core.TrackingState
@@ -160,12 +156,10 @@ class ImageTrackingFragment : Fragment(R.layout.fragment_image_tracking) {
                         // Image initially detected, but not enough data available to estimate its location in 3D space.
                         // Do not use the image's pose and size estimates until the image's tracking state is tracking
                         val text = "${R.string.detected_img_need_more_info} ${it.name}"
-                        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
                     }
                     TrackingState.STOPPED -> {
                         Log.d("OVC", "stopped")
                         val text = "${R.string.track_stop} ${it.name}"
-                        Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
                     }
                     TrackingState.TRACKING -> {
                         Log.d("OVC", "Tracking OK")
