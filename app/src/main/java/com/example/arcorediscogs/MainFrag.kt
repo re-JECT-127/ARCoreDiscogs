@@ -33,7 +33,7 @@ class mainFrag : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        var gitButt = getView()?.findViewById<Button>(R.id.button2)
+        val gitButt = view?.findViewById<Button>(R.id.button2)
         gitButt?.setOnClickListener {
             val i = Intent(
                 Intent.ACTION_VIEW,
@@ -58,7 +58,7 @@ class mainFrag : Fragment() {
     //BARCODE BUTTON
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var barButt = getView()?.findViewById<Button>(R.id.button3)
+        val barButt = getView()?.findViewById<Button>(R.id.button3)
         barButt?.setOnClickListener {
             IntentIntegrator.forSupportFragment(this).initiateScan()
         }
@@ -73,7 +73,7 @@ class mainFrag : Fragment() {
 
             GlobalScope.launch {
                 repository.getBarcode(result.contents)
-                Log.d("FYI","${result.contents}")
+                Log.d("FYI", result.contents)
             }
             Log.d("FYI", "toimiiko1 täääääää ${result.contents}")
 
@@ -91,7 +91,7 @@ class mainFrag : Fragment() {
 
                 }
             } else {
-                super.onActivityResult(requestCode, resultCode, data);
+                super.onActivityResult(requestCode, resultCode, data)
             }
         }
 

@@ -1,8 +1,5 @@
 package com.example.arcorediscogs
 
-import android.graphics.BitmapFactory
-import android.icu.number.NumberFormatter.with
-import android.icu.number.NumberRangeFormatter.with
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.arcorediscogs.database.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_card.*
-import java.net.URL
 
 
 class CardFragment(var id: Long = 0) : Fragment() {
@@ -39,11 +34,12 @@ class CardFragment(var id: Long = 0) : Fragment() {
         val released = fragmentView.findViewById<TextView>(R.id.textView8)
         val albumart = fragmentView.findViewById<ImageView>(R.id.imageView2)
         val picasso = Picasso.get()
-        val db = ResultDB.get(fragmentView.context)
-        val resultModel: ResultModel by viewModels{ResultModelFactory(
-            this.requireActivity().application,
-            id
-        )}
+        val resultModel: ResultModel by viewModels {
+            ResultModelFactory(
+                this.requireActivity().application,
+                id
+            )
+        }
         val viewMod = ViewModelProvider(this).get(resultModel::class.java)
         viewMod.getResults().observe(viewLifecycleOwner) {
             albumtext?.text = it[0].album
@@ -63,10 +59,12 @@ class CardFragment(var id: Long = 0) : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val trackListModel: TracklistInfoModel by viewModels{TrackListModelFactory(
-            this.requireActivity().application,
-            id
-        )}
+        val trackListModel: TracklistInfoModel by viewModels {
+            TrackListModelFactory(
+                this.requireActivity().application,
+                id
+            )
+        }
         Log.d("FYI", "Test2 $id")
         val viewMod = ViewModelProvider(this).get(trackListModel::class.java)
         viewMod.getTracks().observe(viewLifecycleOwner) {

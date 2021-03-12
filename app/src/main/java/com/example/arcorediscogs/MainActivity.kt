@@ -13,7 +13,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
-    lateinit var title: String
     lateinit var spinner: ProgressBar
 
 
